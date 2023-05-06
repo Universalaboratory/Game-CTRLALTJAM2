@@ -6,7 +6,6 @@ namespace UI.GameManagement
 {
     public class UIMenuManager : MonoBehaviour
     {
-
         public void ClickStartButton()
         {
             SceneManager.LoadScene(Constants.GAME_SCENE_1);
