@@ -44,7 +44,7 @@ namespace UI.GameManagement
             if (_transparencyIndexPanel > 0.45f)
             {
                 _transparencyIndexPanel -= 0.1f * Time.deltaTime;
-                _transparencyIndexLogo += 0.1f * Time.deltaTime;
+                var indexLogo = (_transparencyIndexPanel > 0.6f) ? _transparencyIndexLogo += 0.1f * Time.deltaTime : _transparencyIndexLogo += 0.3f * Time.deltaTime;
                 _introColorPanel.a = _transparencyIndexPanel;
                 _introColorLogo.a = _transparencyIndexLogo;
                 introPanel.color = _introColorPanel;
@@ -62,10 +62,10 @@ namespace UI.GameManagement
             }
             else
             {
-                if (_transparencyIndexPanel < 1.2f)
+                if (_transparencyIndexPanel < 1f)
                 {
                     _transparencyIndexPanel += 0.15f * Time.deltaTime;
-                    _transparencyIndexLogo -= 0.15f * Time.deltaTime;
+                    var indexLogo = (_transparencyIndexPanel < 0.6f) ? _transparencyIndexLogo -= 0.1f * Time.deltaTime : _transparencyIndexLogo -= 0.3f * Time.deltaTime;
                     _introColorPanel.a = _transparencyIndexPanel;
                     _introColorLogo.a = _transparencyIndexLogo;
                     introPanel.color = _introColorPanel;

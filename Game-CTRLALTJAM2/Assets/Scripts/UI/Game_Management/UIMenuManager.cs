@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace UI.GameManagement
 {
@@ -10,34 +9,31 @@ namespace UI.GameManagement
 
         public void ClickStartButton()
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(Constants.GAME_SCENE_1);
         }
 
         public void ClickOptionsButton()
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(Constants.OPTIONS_SCENE);
         }
 
         public void ClickCreditButton()
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(Constants.CREDIT_SCENE);
         }
 
         public void ClickQuitButton()
         {
 
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
-
-            Application.Quit();
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+                Application.Quit();
         }
 
         public void ClickBackButton()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(Constants.MENU_START_SCENE);
         }
     }
 }
-
-

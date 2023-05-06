@@ -1,6 +1,6 @@
 namespace Utilities
 {
-    public static class Constants
+    public class Constants
     {
         // SCENES
         public static int MENU_START_SCENE = 1;
