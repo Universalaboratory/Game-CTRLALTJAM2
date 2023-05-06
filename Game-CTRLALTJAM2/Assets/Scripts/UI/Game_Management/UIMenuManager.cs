@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 namespace UI.GameManagement
 {
     public class UIMenuManager : MonoBehaviour
@@ -26,6 +25,10 @@ namespace UI.GameManagement
 
         public void ClickQuitButton()
         {
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
 
             Application.Quit();
         }
