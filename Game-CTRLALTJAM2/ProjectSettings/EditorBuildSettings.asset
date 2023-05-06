@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene.unity
     guid: 8909a66d5a859ad41926e7aa43254a28
   - enabled: 1
-    path: Assets/Scenes/MenuStart.unity
+    path: Assets/Scenes/MenuStartScene.unity
     guid: c9d2689e02590f64686862720bbd0249
+  - enabled: 1
+    path: Assets/Scenes/GameScene_1.unity
+    guid: d4f4eaefbc2c91f40a0165e6f8c53a67
+  - enabled: 1
+    path: Assets/Scenes/OptionsScene.unity
+    guid: 8571dbcf0e8f6614b9c74e0cb94b6545
+  - enabled: 1
+    path: Assets/Scenes/CreditScene.unity
+    guid: a49115b959925bb4d9c3d7b772478e7b
   m_configObjects: {}

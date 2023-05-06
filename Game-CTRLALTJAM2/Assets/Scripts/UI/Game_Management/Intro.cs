@@ -62,7 +62,7 @@ namespace UI.GameManagement
             }
             else
             {
-                if (_transparencyIndexPanel < 1.5f)
+                if (_transparencyIndexPanel < 1.2f)
                 {
                     _transparencyIndexPanel += 0.15f * Time.deltaTime;
                     _transparencyIndexLogo -= 0.15f * Time.deltaTime;
