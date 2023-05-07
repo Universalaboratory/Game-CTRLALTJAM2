@@ -7,6 +7,10 @@ namespace Utilities
         public static int GAME_SCENE_1 = 2;
         public static int OPTIONS_SCENE = 3;
         public static int CREDIT_SCENE = 4;
+
+        // TAGS
+        public static string PLAYER_TAG = "Player";
+        public static string ENEMY_TAG = "Enemy";
     }
 }
 
