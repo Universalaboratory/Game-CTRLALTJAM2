@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class EnemyParticlePool : MonoBehaviour
+namespace Entities.Enemy
 {
-    private ObjectPool<EnemyParticlePool> _pool;
-    private ParticleSystem _particleSystem;
-
-    private void Start()
+    public class EnemyParticlePool : MonoBehaviour
     {
-        _particleSystem = GetComponent<ParticleSystem>();
+        private ObjectPool<EnemyParticlePool> _pool;
+        private ParticleSystem _particleSystem;
 
-        var main = _particleSystem.main;
-        main.stopAction = ParticleSystemStopAction.Callback;
-    }
+        private void Start()
+        {
+            _particleSystem = GetComponent<ParticleSystem>();
 
-    private void OnParticleSystemStopped()
-    {
-        _pool.Release(this);
-    }
+            var main = _particleSystem.main;
+            main.stopAction = ParticleSystemStopAction.Callback;
+        }
 
-    public void SetPool(ObjectPool<EnemyParticlePool> pool)
-    {
-        _pool = pool;
+        private void OnParticleSystemStopped()
+        {
+            _pool.Release(this);
+        }
+
+        public void SetPool(ObjectPool<EnemyParticlePool> pool)
+        {
+            _pool = pool;
+        }
     }
 }
+
