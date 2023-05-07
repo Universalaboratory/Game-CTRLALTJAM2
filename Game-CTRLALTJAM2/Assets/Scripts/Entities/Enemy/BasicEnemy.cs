@@ -7,12 +7,7 @@ namespace Entities.Enemy
     public class BasicEnemy : AEnemy
     {
 
-
-
-        void Start()
-        {
-
-        }
+      
 
         void Update()
         {
@@ -35,7 +30,7 @@ namespace Entities.Enemy
 
         public override void TriggerEnter(GameObject player)
         {
-            Debug.LogWarning("Achou o Player");
+           
         }
 
         public override void TriggerExit()
@@ -48,9 +43,21 @@ namespace Entities.Enemy
             
         }
 
+
+        // Usar essa função pra atirar. 
+        // Fazer o inimigo rotacionar em direção ao jogador
+        // por enquanto o imigo não atira, poq não vê o jogador
         protected override void AttackBehaviour()
         {
-            
+            timer += Time.deltaTime;
+
+            float nextTimeToFire = 1 / _fireRate;
+
+            if (timer >= nextTimeToFire)
+            {
+                _particleSpawner._pool.Get();
+                timer = 0;
+            }
         }
 
         protected override void Die()

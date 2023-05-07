@@ -7,14 +7,21 @@ using UnityEngine.UI;
 namespace Entities.Enemy
 {
     public abstract class AEnemy : MonoBehaviour
-    {        
+    {
+        [Space]
+        [Header("Life Parameters")]
         [SerializeField] protected float maxHealth;
+        [SerializeField] protected GameObject healthBar;
+        [SerializeField] protected Image filledHealthtBar;
+        protected float _currentHealth;
 
         [Space]
-        [SerializeField] protected GameObject healthBar;
-        [SerializeField] private Image filledHealthtBar;
-
-        protected float _currentHealth;
+        [Header("Particle Parameters")]
+        [SerializeField] public EnemyParticlePool _particlePrefab;
+        [SerializeField] public Transform _bulletSpawn;
+        [SerializeField] protected float _fireRate;
+        protected EnemyParticleSpawner _particleSpawner;
+        protected float timer;
 
         public abstract void TriggerEnter(GameObject player);
         public abstract void TriggerStay();
@@ -35,11 +42,9 @@ namespace Entities.Enemy
 
         private void Awake()
         {
-            //_rb = GetComponent<Rigidbody2D>();
-            //anim = GetComponent<Animator>();
+
             healthBar.gameObject.SetActive(false);
 
-            //_state = State.Sleep;
             _currentHealth = maxHealth;
         }
     }
