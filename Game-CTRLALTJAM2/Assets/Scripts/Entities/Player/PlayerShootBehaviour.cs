@@ -57,8 +57,6 @@ public class PlayerShootBehaviour : MonoBehaviour
             main.startSpeed = 10;
 
             timer = 0;
-        }
-                
-    }
-        
+        }               
+    }        
 }
