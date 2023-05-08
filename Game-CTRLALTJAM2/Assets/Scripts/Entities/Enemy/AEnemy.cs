@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace Entities.Enemy
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public abstract class AEnemy : MonoBehaviour
     {
         [Space]
@@ -14,6 +15,12 @@ namespace Entities.Enemy
         [SerializeField] protected GameObject healthBar;
         [SerializeField] protected Image filledHealthtBar;
         protected float _currentHealth;
+
+        [Space]
+        [Header("Movement Parameters")]
+        // _speed fica dentro de cada inimigo.
+        protected Transform _target;
+        protected Rigidbody2D _rb;
 
         [Space]
         [Header("Particle Parameters")]
@@ -40,6 +47,17 @@ namespace Entities.Enemy
             filledHealthtBar.fillAmount = Mathf.Lerp(filledHealthtBar.fillAmount, fillAmountPercentage, 1);
         }
 
+        protected virtual void EnemyLook(Vector3 target)
+        {
+
+            Debug.LogWarning("LOOK PLAYER");
+
+            Vector2 directionLook = target - transform.position;
+            float angle = (Mathf.Atan2(directionLook.y, directionLook.x) * Mathf.Rad2Deg) - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = rotation;
+        }
+
         private void Awake()
         {
 
@@ -47,6 +65,22 @@ namespace Entities.Enemy
 
             _currentHealth = maxHealth;
         }
+
+        private void Start()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+
+            if (_target != null)
+            {
+                Debug.LogWarning("Found Player");
+            }
+        }
+
+
+
+   
+      
     }
 }
 

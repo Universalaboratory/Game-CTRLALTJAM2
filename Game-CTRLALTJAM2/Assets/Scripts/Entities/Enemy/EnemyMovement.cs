@@ -4,34 +4,35 @@ namespace Entities.Enemy
 {
     public class EnemyMovement : MonoBehaviour
     {
-        private GameObject _target;
-        private Rigidbody2D rb;
+        private Transform _target;
+        private Rigidbody2D _rb;
         private float _speed = 0.5f;
 
         private void Start()
         {
-            _target = GameObject.FindGameObjectWithTag("Player");
-            
-
-            rb = GetComponent<Rigidbody2D>();
+            _rb = GetComponent<Rigidbody2D>();
+            _target = GameObject.FindGameObjectWithTag("Player").transform;           
         }
 
         private void Update()
         {
-            EnemyLook(_target.GetComponent<Transform>().position);
+            EnemyLook(_target.position);
             EnemyMove();
         }
 
         public void EnemyMove()
         {
-            //transform.Translate((_targetPos.position - transform.position) * Time.deltaTime * _speed, Space.World);
+            var dir = _target.position - transform.position;
+
+            _rb.velocity = new Vector2(dir.x * _speed, dir.y * _speed);
         }
 
-        private void EnemyLook(Vector2 target)
+        private void EnemyLook(Vector3 target)
         {
-            Vector2 directionLook = (target - (Vector2) transform.position).normalized;
-            float angle = Mathf.Atan2(directionLook.y, directionLook.x) * Mathf.Deg2Rad;
-            transform.rotation = Quaternion.Euler(Vector3.forward * (angle));
+            Vector2 directionLook = target - transform.position;
+            float angle = (Mathf.Atan2(directionLook.y, directionLook.x) * Mathf.Rad2Deg) - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = rotation;
         }
     }
 }

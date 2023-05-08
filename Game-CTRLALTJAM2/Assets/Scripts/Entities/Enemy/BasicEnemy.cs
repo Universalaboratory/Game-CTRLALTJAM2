@@ -6,12 +6,15 @@ namespace Entities.Enemy
 {
     public class BasicEnemy : AEnemy
     {
-
+        [Header("Movement Parameters")]
+        [SerializeField] private float _basicEnemySpeed;
       
 
-        void Update()
+        private void Update()
         {
             LostHealth();
+            EnemyLook(_target.position);
+            MovementTowardsPlayer();
         }
 
         private void OnParticleCollision(GameObject other)
@@ -44,9 +47,7 @@ namespace Entities.Enemy
         }
 
 
-        // Usar essa função pra atirar. 
-        // Fazer o inimigo rotacionar em direção ao jogador
-        // por enquanto o imigo não atira, poq não vê o jogador
+        // Achar o mínimo de distância pra atacar
         protected override void AttackBehaviour()
         {
             timer += Time.deltaTime;
@@ -60,14 +61,22 @@ namespace Entities.Enemy
             }
         }
 
+        // Enquanto estiver atacando, desabilita o movimento
+        protected override void MovementTowardsPlayer()
+        {
+            //if (Player In Range ) return;
+        
+
+            var dir = _target.position - transform.position;
+
+            _rb.velocity = new Vector2(dir.x * _basicEnemySpeed, dir.y * _basicEnemySpeed);
+
+            Debug.LogWarning("Moving Toward Player");
+        }
+
         protected override void Die()
         {
             Destroy(gameObject);
-        }
-
-        protected override void MovementTowardsPlayer()
-        {
-            
         }
 
         protected override void PatrolMovement()
@@ -75,7 +84,6 @@ namespace Entities.Enemy
             
         }
 
-     
     }
 }
 
