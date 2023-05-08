@@ -2354,7 +2354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 2396348134190186677, guid: 77bee7671a10d6646b6e804afb8f4aaf, type: 3}
-  _totalEnemiesToSpawn: 1
+  _totalEnemiesToSpawn: 5
 --- !u!61 &2026759725
 BoxCollider2D:
   m_ObjectHideFlags: 0

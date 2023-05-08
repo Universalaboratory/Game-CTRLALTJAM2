@@ -20,6 +20,7 @@ namespace Entities.Player
         private ParticlePool CreateParticles()
         {
             ParticlePool particles = Instantiate(_playerShootBehaviour._particlePrefab, _playerShootBehaviour._bulletSpawn.position, _playerShootBehaviour._bulletSpawn.rotation);
+            particles.transform.SetParent(_playerShootBehaviour._bulletSpawn);
             particles.SetPool(_pool);
             return particles;
         }

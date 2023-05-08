@@ -158,6 +158,7 @@ MonoBehaviour:
   _bulletSpawn: {fileID: 4943984107108451852}
   _fireRate: 2
   _basicEnemySpeed: 2
+  _ISCOLLIDING: 1
 --- !u!114 &3516090141881645597
 MonoBehaviour:
   m_ObjectHideFlags: 0

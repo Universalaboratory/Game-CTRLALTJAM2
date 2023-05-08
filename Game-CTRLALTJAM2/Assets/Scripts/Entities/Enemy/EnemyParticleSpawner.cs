@@ -21,6 +21,7 @@ namespace Entities.Enemy
         private EnemyParticlePool CreateParticles()
         {
             EnemyParticlePool particles = Instantiate(_myEnemy._particlePrefab, _myEnemy._bulletSpawn.position, _myEnemy._bulletSpawn.rotation);
+            particles.transform.SetParent(_myEnemy._bulletSpawn);
             particles.SetPool(_pool);
             return particles;
         }

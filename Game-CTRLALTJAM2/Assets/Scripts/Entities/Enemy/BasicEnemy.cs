@@ -9,8 +9,14 @@ namespace Entities.Enemy
         [Header("Movement Parameters")]
         [SerializeField] private float _basicEnemySpeed;
 
+        [Header("TEST")]
+        [SerializeField] private bool _ISCOLLIDING;
+
         private void OnParticleCollision(GameObject other)
         {
+            if (!_ISCOLLIDING) return;
+           
+            
             healthBar.gameObject.SetActive(true);
             HealthBarFiller(1);
         }
