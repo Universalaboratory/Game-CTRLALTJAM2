@@ -45,12 +45,16 @@ namespace Entities.Player
 
         private void Update()
         {
+            if (GameManager.Instance._state == GameState.PAUSE) return;           
+
             GetPlayerMovement();
             LookAtMouse();
         }
 
         private void FixedUpdate()
         {
+            if (GameManager.Instance._state == GameState.PAUSE) return;
+
             MovePlayer();
             Dash();
         }

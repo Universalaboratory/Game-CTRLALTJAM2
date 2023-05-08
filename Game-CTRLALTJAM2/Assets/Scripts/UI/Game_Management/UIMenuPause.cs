@@ -15,15 +15,17 @@ namespace UI.GameManagement
         }
 
         public void ClickPauseButton()
-        {
-            Time.timeScale = 0;
+        {           
+            UtilityEvents.GamePause();
+
             menuPanel.SetActive(true);
             pauseButton.SetActive(false);
         }
 
         public void ClickPlayButton()
         {
-            Time.timeScale = 1;
+            UtilityEvents.GameResume();
+
             menuPanel.SetActive(false);
             pauseButton.SetActive(true);
         }

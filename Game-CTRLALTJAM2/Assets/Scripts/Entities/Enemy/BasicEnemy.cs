@@ -70,7 +70,7 @@ namespace Entities.Enemy
 
         protected override void Die()
         {
-            GameplayEvents.OnEnemyDeath(this.gameObject);
+            GameplayEvents.EnemyDeath(this.gameObject);
             Destroy(gameObject);
         } 
     }

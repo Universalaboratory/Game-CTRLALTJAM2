@@ -38,12 +38,12 @@ namespace UI.GameManagement
 
         private void OnEnable()
         {
-            GameplayEvents.EnemyDeath += RemoveEnemyFromList;
+            GameplayEvents.OnEnemyDeath += RemoveEnemyFromList;
         }
 
         private void OnDisable()
         {
-            GameplayEvents.EnemyDeath -= RemoveEnemyFromList;            
+            GameplayEvents.OnEnemyDeath -= RemoveEnemyFromList;            
         }
 
         private Vector2 GetPosition()
@@ -64,17 +64,14 @@ namespace UI.GameManagement
         {
             _liveEnemyList.Remove(enemy);
             CheckTotalEnemyAlive();
-
         }
 
         private void CheckTotalEnemyAlive()
         {
-            if (_liveEnemyList.Count == 0)
-            {
+            if (_liveEnemyList.Count == 0)           
                 _waveManager.NextWave();
-            }
+            
         }
-
     }
 
 }

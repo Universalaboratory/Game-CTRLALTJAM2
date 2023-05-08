@@ -51,11 +51,19 @@ namespace Entities.Enemy
 
         protected virtual void Update()
         {
+            if (GameManager.Instance._state == GameState.PAUSE) return;
+
             LostHealth();
             EnemyLook(_target.position);
-            MovementTowardsPlayer();
             VerifyRange();
             AttackBehaviour();
+        }
+
+        protected virtual void FixedUpdate()
+        {
+            if (GameManager.Instance._state == GameState.PAUSE) return;
+
+            MovementTowardsPlayer();
         }
 
         protected abstract void MovementTowardsPlayer();
