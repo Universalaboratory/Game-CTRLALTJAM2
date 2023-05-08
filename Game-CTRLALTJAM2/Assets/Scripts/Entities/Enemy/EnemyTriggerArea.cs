@@ -12,13 +12,14 @@ namespace Entities.Enemy
         private void Start()
         {
             _myEnemy = GetComponentInParent<AEnemy>();
+
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (other.CompareTag("Player"))
+            if (collision.CompareTag(Constants.PLAYER_TAG))
             {
-                GameObject player = other.transform.gameObject;
+                GameObject player = collision.transform.gameObject;
 
                 Debug.LogWarning("ACHOU PLAYER");
 
@@ -26,9 +27,13 @@ namespace Entities.Enemy
             }
         }
 
-        private void OnTriggerStay(Collider other) => _myEnemy.TriggerStay();
 
-        private void OnTriggerExit(Collider other) => _myEnemy.TriggerExit();
+        //private void OnTriggerStay2D(Collider other) => _myEnemy.TriggerStay();
+
+        //private void OnTriggerExit2D(Collider other) => _myEnemy.TriggerExit();
+
+        private void OnTriggerStay2D(Collider2D collision) => _myEnemy.TriggerStay();
+        
     }
 }
 

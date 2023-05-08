@@ -22,6 +22,10 @@ namespace Entities.Enemy
         protected Transform _target;
         protected Rigidbody2D _rb;
 
+        [Header("Attack Parameters")]
+        protected bool _isPlayerInRange = false;
+
+
         [Space]
         [Header("Particle Parameters")]
         [SerializeField] public EnemyParticlePool _particlePrefab;
@@ -49,9 +53,6 @@ namespace Entities.Enemy
 
         protected virtual void EnemyLook(Vector3 target)
         {
-
-            Debug.LogWarning("LOOK PLAYER");
-
             Vector2 directionLook = target - transform.position;
             float angle = (Mathf.Atan2(directionLook.y, directionLook.x) * Mathf.Rad2Deg) - 90f;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -69,18 +70,10 @@ namespace Entities.Enemy
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
+            _particleSpawner = GetComponent<EnemyParticleSpawner>();
             _target = GameObject.FindGameObjectWithTag("Player").transform;
 
-            if (_target != null)
-            {
-                Debug.LogWarning("Found Player");
-            }
-        }
-
-
-
-   
-      
+        }     
     }
 }
 

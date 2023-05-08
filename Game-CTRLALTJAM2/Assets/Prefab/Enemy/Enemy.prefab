@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 2396348134556559847}
   - component: {fileID: 2396348134556559840}
   m_Layer: 0
-  m_Name: TriggerArea
+  m_Name: AttackRangeArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 3
 --- !u!114 &2396348134556559840
 MonoBehaviour:
   m_ObjectHideFlags: 0
