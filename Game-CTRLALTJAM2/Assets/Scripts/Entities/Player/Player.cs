@@ -29,7 +29,6 @@ namespace Entities.Player
             _input = new InputControl();
             _rb = GetComponent<Rigidbody2D>();
             mainCamera = Camera.main;
-
         }
 
         private void OnEnable()

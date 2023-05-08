@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 66306309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Buttel_Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 74587136}
   - component: {fileID: 74587135}
   - component: {fileID: 74587134}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fill_Life_Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 57.2
   m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -365,6 +365,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99200994}
   m_CullTransparentMesh: 1
+--- !u!1 &230335954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 230335955}
+  m_Layer: 0
+  m_Name: =========ENTITIES==================
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &230335955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230335954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232876992
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324233615}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Life_Bar_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -548,7 +579,7 @@ GameObject:
   m_Component:
   - component: {fileID: 339522459}
   - component: {fileID: 339522460}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,7 +664,7 @@ GameObject:
   - component: {fileID: 523945576}
   - component: {fileID: 523945578}
   - component: {fileID: 523945577}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BG_Life_Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -849,7 +880,7 @@ GameObject:
   - component: {fileID: 669836904}
   - component: {fileID: 669836906}
   - component: {fileID: 669836907}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -872,7 +903,7 @@ Transform:
   - {fileID: 66306309}
   - {fileID: 1245603905}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &669836901
 MonoBehaviour:
@@ -1031,6 +1062,7 @@ MonoBehaviour:
   _maxHelath: 10
   healthBar: {fileID: 1245603904}
   filledHealthtBar: {fileID: 74587134}
+  part: {fileID: 0}
 --- !u!1 &721638507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,6 +1332,68 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -8.098877, y: -5.0809937}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &860023785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860023786}
+  m_Layer: 0
+  m_Name: ==========CANVAS==================
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860023786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860023785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1232852497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1232852498}
+  m_Layer: 0
+  m_Name: ==========MANAGERS==============
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1232852498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232852497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1245603904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1406,7 @@ GameObject:
   - component: {fileID: 1245603908}
   - component: {fileID: 1245603907}
   - component: {fileID: 1245603906}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Canvas_Life_Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1577,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1321889750
 GameObject:
@@ -2013,7 +2107,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1744765508
 GameObject:
@@ -2260,9 +2354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 2396348134190186677, guid: 77bee7671a10d6646b6e804afb8f4aaf, type: 3}
-  _spawnArea: {fileID: 2026759725}
-  _spawnAreaSize: {x: 0, y: 0}
-  newPos: {x: 0, y: 0}
+  _totalEnemiesToSpawn: 1
 --- !u!61 &2026759725
 BoxCollider2D:
   m_ObjectHideFlags: 0

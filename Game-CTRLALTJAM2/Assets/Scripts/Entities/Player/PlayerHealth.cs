@@ -13,15 +13,20 @@ namespace Entities.Player
         [SerializeField] protected Image filledHealthtBar;
         private float _currentHealth;
 
-        private void OnParticleCollision(GameObject other)
+        public ParticleSystem part;
+        public List<ParticleCollisionEvent> collisionEvents;
+
+        private void Start()
         {
-            if (!other.CompareTag(Constants.ENEMY_TAG)) return;
+            _currentHealth = _maxHelath;
 
-            // Pegar do inimigo o dano que ele fizer
-
-            LostLife(1);          
+            collisionEvents = new List<ParticleCollisionEvent>();
         }
 
+        private void OnParticleCollision(GameObject other)
+        {
+            LostLife(1);
+        }
 
         private void LostLife(float damage)
         {
