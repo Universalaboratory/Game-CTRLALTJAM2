@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
+using UI.GameManagement;
 
 namespace Entities.Player
 {
@@ -16,8 +17,11 @@ namespace Entities.Player
         public ParticleSystem part;
         public List<ParticleCollisionEvent> collisionEvents;
 
+
         private void Start()
         {
+
+
             _currentHealth = _maxHelath;
 
             collisionEvents = new List<ParticleCollisionEvent>();
@@ -41,7 +45,7 @@ namespace Entities.Player
 
         private void Die()
         {
-            Debug.LogWarning("GAME OVER");
+            //Debug.LogWarning("GAME OVER");
         }
     }
 }
