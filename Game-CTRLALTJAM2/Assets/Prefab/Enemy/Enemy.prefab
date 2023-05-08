@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1979327457822753253}
   - component: {fileID: 2396348134190186676}
   - component: {fileID: 3516090141881645597}
+  - component: {fileID: 793375757295331664}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -171,6 +172,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8580fd14678bd2d49b55aeae7e560859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &793375757295331664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396348134190186677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdca44f7ae717d48a4e6fe1f6617619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppedItem: {fileID: 551305324797405967, guid: 32adeaf8a7dc53e4fb79b35a685966cb, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: 365249b4692f5bf49a61ac6916d4e500, type: 2}
+  - {fileID: 11400000, guid: a5035cdcf80fc8f42b5d2be2aa3bd8ee, type: 2}
 --- !u!1 &2396348134442836300
 GameObject:
   m_ObjectHideFlags: 0
