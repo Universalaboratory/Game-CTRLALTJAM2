@@ -23,8 +23,9 @@ namespace Entities.Enemy
         protected Rigidbody2D _rb;
 
         [Header("Attack Parameters")]
+        [SerializeField]protected float _minDistToAttack;
         protected bool _isPlayerInRange = false;
-
+        protected Vector2 _distanceToPlayer;
 
         [Space]
         [Header("Particle Parameters")]
@@ -34,12 +35,10 @@ namespace Entities.Enemy
         protected EnemyParticleSpawner _particleSpawner;
         protected float timer;
 
-        public abstract void TriggerEnter(GameObject player);
-        public abstract void TriggerStay();
-        public abstract void TriggerExit();
 
         protected abstract void MovementTowardsPlayer();
         protected abstract void PatrolMovement();
+        protected abstract void VerifyRange();
         protected abstract void AttackBehaviour();
         protected abstract void Die();
 
@@ -53,17 +52,15 @@ namespace Entities.Enemy
 
         protected virtual void EnemyLook(Vector3 target)
         {
-            Vector2 directionLook = target - transform.position;
-            float angle = (Mathf.Atan2(directionLook.y, directionLook.x) * Mathf.Rad2Deg) - 90f;
+            _distanceToPlayer = target - transform.position;
+            float angle = (Mathf.Atan2(_distanceToPlayer.y, _distanceToPlayer.x) * Mathf.Rad2Deg) - 90f;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = rotation;
         }
 
         private void Awake()
         {
-
             healthBar.gameObject.SetActive(false);
-
             _currentHealth = maxHealth;
         }
 
@@ -72,7 +69,6 @@ namespace Entities.Enemy
             _rb = GetComponent<Rigidbody2D>();
             _particleSpawner = GetComponent<EnemyParticleSpawner>();
             _target = GameObject.FindGameObjectWithTag("Player").transform;
-
         }     
     }
 }

@@ -8,13 +8,13 @@ namespace Entities.Enemy
     {
         [Header("Movement Parameters")]
         [SerializeField] private float _basicEnemySpeed;
-      
 
         private void Update()
         {
             LostHealth();
             EnemyLook(_target.position);
             MovementTowardsPlayer();
+            VerifyRange();
             AttackBehaviour();
         }
 
@@ -32,26 +32,7 @@ namespace Entities.Enemy
             }
         }
 
-        public override void TriggerEnter(GameObject player)
-        {
-            _isPlayerInRange = true;
-            Debug.LogWarning("Player In Range");
-        }
-
-
-        // ainda não tá funcionando como deveria
-        public override void TriggerExit()
-        {
-
-            Debug.LogWarning("Player Out of Range");
-            _isPlayerInRange = false;
-        }
-
-        public override void TriggerStay()
-        {
-            
-        }
-
+  
 
         // Achar o mínimo de distância pra atacar
         protected override void AttackBehaviour()
@@ -74,8 +55,9 @@ namespace Entities.Enemy
         {
             if (_isPlayerInRange) _rb.velocity = Vector2.zero;
         
-            var dir = _target.position - transform.position;
-            _rb.velocity = new Vector2(dir.x * _basicEnemySpeed, dir.y * _basicEnemySpeed);
+            _distanceToPlayer = _target.position - transform.position;
+            var distNormilize = _distanceToPlayer.normalized;
+            _rb.velocity = new Vector2(distNormilize.x * _basicEnemySpeed, distNormilize.y * _basicEnemySpeed);
         }
 
         protected override void Die()
@@ -88,6 +70,22 @@ namespace Entities.Enemy
             
         }
 
+        protected override void VerifyRange()
+        {
+
+            // Acertar essa distancia. 
+            // Criar um Draw line pra debugar melhor 
+            if (_distanceToPlayer.x < _minDistToAttack || _distanceToPlayer.y < _minDistToAttack)
+            {
+                Debug.LogWarning("IN RANGE");
+                _isPlayerInRange = true;
+            }
+            else
+            {
+                Debug.LogWarning("OUT OF RANGE");
+                _isPlayerInRange = false;
+            }
+        }
     }
 }
 
