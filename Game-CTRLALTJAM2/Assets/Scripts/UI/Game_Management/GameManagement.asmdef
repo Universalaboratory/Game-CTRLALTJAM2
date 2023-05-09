@@ -2,7 +2,8 @@
     "name": "GameManagement",
     "rootNamespace": "",
     "references": [
-        "GUID:81807b5da9bd8f0499791d2ba4a1a54d"
+        "GUID:81807b5da9bd8f0499791d2ba4a1a54d",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
