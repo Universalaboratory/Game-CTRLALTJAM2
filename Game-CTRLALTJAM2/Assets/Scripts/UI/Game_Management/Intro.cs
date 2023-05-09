@@ -56,24 +56,17 @@ namespace UI.GameManagement
 
         private void FadeOut()
         {
-            if (_fadeOutCount < 1)
+            if (_transparencyIndexPanel < 1f)
             {
-                _fadeOutCount += Time.deltaTime;
+                _transparencyIndexPanel += 0.15f * Time.deltaTime;
+                var indexLogo = (_transparencyIndexPanel < 0.6f) ? _transparencyIndexLogo -= 0.1f * Time.deltaTime : _transparencyIndexLogo -= 0.3f * Time.deltaTime;
+                _introColorPanel.a = _transparencyIndexPanel;
+                _introColorLogo.a = _transparencyIndexLogo;
+                introPanel.color = _introColorPanel;
+                logo.color = _introColorLogo;
             }
             else
-            {
-                if (_transparencyIndexPanel < 1f)
-                {
-                    _transparencyIndexPanel += 0.15f * Time.deltaTime;
-                    var indexLogo = (_transparencyIndexPanel < 0.6f) ? _transparencyIndexLogo -= 0.1f * Time.deltaTime : _transparencyIndexLogo -= 0.3f * Time.deltaTime;
-                    _introColorPanel.a = _transparencyIndexPanel;
-                    _introColorLogo.a = _transparencyIndexLogo;
-                    introPanel.color = _introColorPanel;
-                    logo.color = _introColorLogo;
-                }
-                else
-                    SceneManager.LoadScene(1);
-            }
+                SceneManager.LoadScene(1);
         }
     }
 }

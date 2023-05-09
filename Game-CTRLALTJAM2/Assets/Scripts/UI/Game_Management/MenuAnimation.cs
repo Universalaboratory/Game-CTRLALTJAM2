@@ -33,7 +33,7 @@ public class MenuAnimation : MonoBehaviour
     {
         if (!_transitionOver)
         {
-            if (bg.uvRect.position.x < 0.4999f)
+            if (bg.uvRect.position.x < 0.499f)
                 bg.uvRect = new Rect(bg.uvRect.position +  new Vector2(0.0001f, 0) * Time.deltaTime * 1000, bg.uvRect.size);
             else
             {
