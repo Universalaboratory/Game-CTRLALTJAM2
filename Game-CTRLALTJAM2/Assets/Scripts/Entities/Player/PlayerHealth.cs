@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Utilities;
 using UI.GameManagement;
 
+
 namespace Entities.Player
 {
     public class PlayerHealth : MonoBehaviour
@@ -45,6 +46,7 @@ namespace Entities.Player
 
         private void Die()
         {
+            GameplayEvents.GameOver();
             //Debug.LogWarning("GAME OVER");
         }
     }

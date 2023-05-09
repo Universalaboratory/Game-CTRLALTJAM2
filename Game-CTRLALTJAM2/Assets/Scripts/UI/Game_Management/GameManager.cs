@@ -5,7 +5,8 @@ using UnityEngine;
 public enum GameState
 {
     GAMEPLAY,
-    PAUSE
+    PAUSE,
+    GAMEOVER
 }
 
 namespace UI.GameManagement
@@ -34,12 +35,14 @@ namespace UI.GameManagement
         {
             UtilityEvents.OnGamePause += GamePaused;
             UtilityEvents.OnGameResume += GameResumed;
+            GameplayEvents.OnGameOver += GameOver;
         }
 
         private void OnDisable()
         {
             UtilityEvents.OnGamePause -= GamePaused;            
             UtilityEvents.OnGameResume -= GameResumed;
+            GameplayEvents.OnGameOver -= GameOver;
         }
 
         public void ChangeState(GameState state)
@@ -59,6 +62,11 @@ namespace UI.GameManagement
             ChangeState(GameState.GAMEPLAY);
 
             Time.timeScale = 1;
+        }
+
+        private void GameOver()
+        {
+            ChangeState(GameState.GAMEOVER);
         }
     }
 }

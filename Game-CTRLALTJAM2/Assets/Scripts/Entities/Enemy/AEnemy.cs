@@ -51,7 +51,7 @@ namespace Entities.Enemy
 
         protected virtual void Update()
         {
-            if (GameManager.Instance._state == GameState.PAUSE) return;
+            if (GameManager.Instance._state != GameState.GAMEPLAY) return;
 
             LostHealth();
             EnemyLook(_target.position);
@@ -61,7 +61,7 @@ namespace Entities.Enemy
 
         protected virtual void FixedUpdate()
         {
-            if (GameManager.Instance._state == GameState.PAUSE) return;
+            if (GameManager.Instance._state != GameState.GAMEPLAY) return;
 
             MovementTowardsPlayer();
         }
