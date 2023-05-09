@@ -40,7 +40,8 @@ namespace UI.LootSystem
             {
                 for (int i = 0; i < droppedItem.Count; i++)
                 {
-                    GameObject newLoot = Instantiate(droppedItemPrefab, lootPos, Quaternion.identity);
+                    Vector3 newPos = new Vector3(lootPos.x + Random.Range(-1, 1), lootPos.y + Random.Range(-1, 1), 0);
+                    GameObject newLoot = Instantiate(droppedItemPrefab, newPos, Quaternion.identity);
                     newLoot.GetComponent<SpriteRenderer>().sprite = droppedItem[i].lootSprite;
                 }
             }

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UI.GameManagement;
+using UI.LootSystem;
 
 namespace Entities.Enemy
 {
@@ -70,6 +69,7 @@ namespace Entities.Enemy
 
         protected override void Die()
         {
+            GetComponent<LootBag>().SpawnLoot(transform.position);
             GameplayEvents.EnemyDeath(this.gameObject);
             Destroy(gameObject);
         } 
