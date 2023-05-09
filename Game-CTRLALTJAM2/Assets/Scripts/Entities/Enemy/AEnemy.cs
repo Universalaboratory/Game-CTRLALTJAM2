@@ -24,7 +24,7 @@ namespace Entities.Enemy
         protected Rigidbody2D _rb;
 
         [Header("Attack Parameters")]
-        [SerializeField]protected float _minDistToAttack;
+        [SerializeField] protected float _minDistToAttack;
         protected bool _isPlayerInRange = false;
         protected Vector2 _distanceToPlayer;
 
@@ -61,7 +61,11 @@ namespace Entities.Enemy
 
         protected virtual void FixedUpdate()
         {
-            if (GameManager.Instance._state != GameState.GAMEPLAY) return;
+            if (GameManager.Instance._state != GameState.GAMEPLAY)
+            {
+                _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                return;
+            }
 
             MovementTowardsPlayer();
         }
@@ -70,7 +74,7 @@ namespace Entities.Enemy
         protected abstract void PatrolMovement();
         protected abstract void VerifyRange();
         protected abstract void AttackBehaviour();
-        protected abstract void LostHealth();        
+        protected abstract void LostHealth();
         protected abstract void Die();
 
         protected virtual void HealthBarFiller(float damage)
@@ -87,7 +91,7 @@ namespace Entities.Enemy
             float angle = (Mathf.Atan2(_distanceToPlayer.y, _distanceToPlayer.x) * Mathf.Rad2Deg) - 90f;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = rotation;
-        } 
+        }
     }
 }
 

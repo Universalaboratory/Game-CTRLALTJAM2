@@ -13,16 +13,22 @@ namespace UI.GameManagement
     {
         public WaveState _wave;
 
-
         private void Start()
         {
             _wave = WaveState.WAVE_1;
+            CallNextWave();
         }
 
 
         public void NextWave()
         {
             _wave++;
+            CallNextWave();
+        }
+
+        private void CallNextWave()
+        {
+            GameplayEvents.NextWave(_wave);
         }
     }
 

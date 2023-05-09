@@ -10,7 +10,7 @@ namespace UI.GameManagement
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private GameObject _prefab;
-        [SerializeField] private int _totalEnemiesToSpawn;
+        [SerializeField] private int _enemiesToSpawnPerWave;
         [SerializeField] private List<GameObject> _liveEnemyList = new List<GameObject>();
 
         private WaveManager _waveManager;
@@ -29,20 +29,19 @@ namespace UI.GameManagement
 
         private void Start()
         {
-            for (int i = _totalEnemiesToSpawn; i > 0; i--)
-            {
-                GameObject enemy = Instantiate(_prefab, GetPosition(), Quaternion.identity);
-                AddEnemyToList(enemy);
-            }
+            SpawnEnemy(WaveState.WAVE_1);
         }
 
         private void OnEnable()
         {
+            GameplayEvents.OnNextWave += SpawnEnemy;
             GameplayEvents.OnEnemyDeath += RemoveEnemyFromList;
         }
 
         private void OnDisable()
         {
+          
+            GameplayEvents.OnNextWave -= SpawnEnemy;
             GameplayEvents.OnEnemyDeath -= RemoveEnemyFromList;            
         }
 
@@ -53,6 +52,17 @@ namespace UI.GameManagement
             print(newPos.x + "/" + newPos.y);
 
             return newPos;
+        }
+
+        private void SpawnEnemy(WaveState currentWave)
+        {
+            var totalEnemiesToSpawn = _enemiesToSpawnPerWave + (int)currentWave;
+
+            for (int i = totalEnemiesToSpawn; i > 0; i--)
+            {
+                GameObject enemy = Instantiate(_prefab, GetPosition(), Quaternion.identity);
+                AddEnemyToList(enemy);
+            }
         }
 
         private void AddEnemyToList(GameObject enemy)
@@ -69,8 +79,7 @@ namespace UI.GameManagement
         private void CheckTotalEnemyAlive()
         {
             if (_liveEnemyList.Count == 0)           
-                _waveManager.NextWave();
-            
+                _waveManager.NextWave();            
         }
     }
 

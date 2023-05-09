@@ -32,6 +32,9 @@ namespace UI.GameManagement
 
         public static event UnityAction OnEndGame;
         public static void EndGame() => OnEndGame?.Invoke();
+
+        public static event UnityAction<WaveState> OnNextWave;
+        public static void NextWave(WaveState wave) => OnNextWave?.Invoke(wave);
     }
 
     public static class UtilityEvents

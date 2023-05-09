@@ -11,7 +11,7 @@ namespace Entities.Player
         [Header("Player Normal Movements Parameters")]
         [SerializeField] private float _playerSpeed;
 
-        [Header("Player Dash Parameters")]   
+        [Header("Player Dash Parameters")]
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashTotalTimeSeconds;
         [SerializeField] private float _dashCoolDownTimeSeconds;
@@ -45,7 +45,7 @@ namespace Entities.Player
 
         private void Update()
         {
-            if (GameManager.Instance._state != GameState.GAMEPLAY) return;           
+            if (GameManager.Instance._state != GameState.GAMEPLAY) return;
 
             GetPlayerMovement();
             LookAtMouse();
@@ -53,7 +53,11 @@ namespace Entities.Player
 
         private void FixedUpdate()
         {
-            if (GameManager.Instance._state != GameState.GAMEPLAY) return;
+            if (GameManager.Instance._state != GameState.GAMEPLAY)
+            {
+                _rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                return;
+            }
 
             MovePlayer();
             Dash();
