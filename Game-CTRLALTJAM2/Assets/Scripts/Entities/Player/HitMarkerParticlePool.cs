@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class ParticlePool : MonoBehaviour
+public class HitMarkerParticlePool : MonoBehaviour
 {
-    private ObjectPool<ParticlePool> _pool;
+    private ObjectPool<HitMarkerParticlePool> _pool;
     private ParticleSystem _particleSystem;
 
     private void Start()
@@ -21,10 +19,8 @@ public class ParticlePool : MonoBehaviour
         _pool.Release(this);
     }
 
-    public void SetPool(ObjectPool<ParticlePool> pool)
+    public void SetPool(ObjectPool<HitMarkerParticlePool> pool)
     {
         _pool = pool;
     }
-
-
 }

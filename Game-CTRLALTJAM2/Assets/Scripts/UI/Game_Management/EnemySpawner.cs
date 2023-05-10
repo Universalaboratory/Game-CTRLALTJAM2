@@ -11,6 +11,7 @@ namespace UI.GameManagement
     {
         [Header("Prefab List")]
         [SerializeField] private GameObject[] _prefabEnemyList;
+        [SerializeField] private GameObject _prefabBoss;
 
         [Space]
         [SerializeField] private int _enemiesToSpawnPerWave;
@@ -33,6 +34,7 @@ namespace UI.GameManagement
         private void OnEnable()
         {
             GameplayEvents.OnNextWave += SpawnEnemy;
+            GameplayEvents.OnBoss += SpawnBoss;
             GameplayEvents.OnEnemyDeath += RemoveEnemyFromList;
         }
 
@@ -40,6 +42,7 @@ namespace UI.GameManagement
         {
 
             GameplayEvents.OnNextWave -= SpawnEnemy;
+            GameplayEvents.OnBoss -= SpawnBoss;
             GameplayEvents.OnEnemyDeath -= RemoveEnemyFromList;
         }
 
@@ -63,6 +66,15 @@ namespace UI.GameManagement
                 GameObject enemy = Instantiate(_prefabEnemyList[enemyToSpawn], GetPosition(), Quaternion.identity);
                 AddEnemyToList(enemy);
             }
+        }
+
+        private void SpawnBoss()
+        {
+            // Posição randomica
+            //GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);            
+
+            // Centro da Tela
+            GameObject enemy = Instantiate(_prefabBoss, Vector3.zero, Quaternion.identity);            
         }
 
         private void AddEnemyToList(GameObject enemy)

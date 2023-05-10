@@ -6,7 +6,8 @@ public enum GameState
 {
     GAMEPLAY,
     PAUSE,
-    GAMEOVER
+    GAMEOVER,
+    WIN
 }
 
 namespace UI.GameManagement
@@ -36,6 +37,7 @@ namespace UI.GameManagement
             UtilityEvents.OnGamePause += GamePaused;
             UtilityEvents.OnGameResume += GameResumed;
             GameplayEvents.OnGameOver += GameOver;
+            GameplayEvents.OnWinGame += GameEnd;
         }
 
         private void OnDisable()
@@ -43,6 +45,7 @@ namespace UI.GameManagement
             UtilityEvents.OnGamePause -= GamePaused;            
             UtilityEvents.OnGameResume -= GameResumed;
             GameplayEvents.OnGameOver -= GameOver;
+            GameplayEvents.OnWinGame += GameEnd;
         }
 
         public void ChangeState(GameState state)
@@ -67,6 +70,11 @@ namespace UI.GameManagement
         private void GameOver()
         {
             ChangeState(GameState.GAMEOVER);
+        }
+
+        private void GameEnd()
+        {
+            ChangeState(GameState.WIN);
         }
     }
 }

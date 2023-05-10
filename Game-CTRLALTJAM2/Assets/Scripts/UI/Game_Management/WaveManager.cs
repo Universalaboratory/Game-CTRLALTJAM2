@@ -23,12 +23,29 @@ namespace UI.GameManagement
         public void NextWave()
         {
             _wave++;
-            CallNextWave();
+
+            CheckCurrentWave();
+        }
+
+        private void CheckCurrentWave()
+        {
+            if (_wave != WaveState.BOSS)
+            {
+                CallNextWave();
+                return;
+            }
+
+            CallBoss();
         }
 
         private void CallNextWave()
         {
             GameplayEvents.NextWave(_wave);
+        }
+
+        private void CallBoss()
+        {
+            GameplayEvents.BossTime();
         }
     }
 

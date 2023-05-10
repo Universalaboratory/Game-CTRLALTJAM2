@@ -8,15 +8,13 @@ namespace Entities.Enemy
 {
     public class EnemyParticleSpawner : MonoBehaviour
     {
-
-
         public ObjectPool<EnemyParticlePool> _pool;
 
         private AEnemy _myEnemy;
 
         private void Start()
         {
-            _myEnemy = GetComponent<AEnemy>();
+            _myEnemy = GetComponentInParent<AEnemy>();
             _pool = new ObjectPool<EnemyParticlePool>(CreateParticles, OnTakeParticleFromPool, OnReturnParticleToPool, OnDestroyParticles, true, 200, 350);
         }
 
@@ -39,7 +37,6 @@ namespace Entities.Enemy
         private void OnReturnParticleToPool(EnemyParticlePool particles)
         {
             particles.gameObject.SetActive(false);
-
         }
 
         private void OnDestroyParticles(EnemyParticlePool particles)

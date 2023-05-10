@@ -30,15 +30,17 @@ namespace UI.GameManagement
         public static event UnityAction OnGameOver;
         public static void GameOver() => OnGameOver?.Invoke();
 
-        public static event UnityAction OnEndGame;
-        public static void EndGame() => OnEndGame?.Invoke();
-
+        public static event UnityAction OnWinGame;
+        public static void WinGame() => OnWinGame?.Invoke();
 
         public static event UnityAction<float> OnDash;
         public static void Dash(float dashTimer) => OnDash?.Invoke(dashTimer);
 
         public static event UnityAction<WaveState> OnNextWave;
         public static void NextWave(WaveState wave) => OnNextWave?.Invoke(wave);
+
+        public static event UnityAction OnBoss;
+        public static void BossTime() => OnBoss?.Invoke();
     }
 
     public static class UtilityEvents

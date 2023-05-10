@@ -9,9 +9,11 @@ namespace UI.GameManagement
     public class UIMenuPause : MonoBehaviour
     {
         [Header("Panels")]
-        [SerializeField] private GameObject menuPanel;
-        [SerializeField] private GameObject gameOverMenu;
-        [SerializeField] private GameObject gameplayPanel;
+        [SerializeField] private GameObject _gameplayPanel;
+        [SerializeField] private GameObject _menuPanel;
+        [SerializeField] private GameObject _gameOverPanel;
+        [SerializeField] private GameObject _winPanel;
+
 
         [Header("Texts")]
         [SerializeField] private TMP_Text _waveText;
@@ -22,7 +24,7 @@ namespace UI.GameManagement
         {
             Time.timeScale = 1;
             CloseAllPanel();
-            gameplayPanel.SetActive(true);
+            _gameplayPanel.SetActive(true);
 
             _waveTextColor = _waveText.color;
         }
@@ -30,20 +32,24 @@ namespace UI.GameManagement
         private void OnEnable()
         {
             GameplayEvents.OnNextWave += SetUpWaveText;
+            GameplayEvents.OnBoss += SetUpBossText;
             GameplayEvents.OnGameOver += GameOverPanel;
+            GameplayEvents.OnWinGame += WinPanel;
         }
 
         private void OnDisable()
         {
             GameplayEvents.OnNextWave -= SetUpWaveText;
+            GameplayEvents.OnBoss -= SetUpBossText;
             GameplayEvents.OnGameOver -= GameOverPanel;
+            GameplayEvents.OnWinGame -= WinPanel;
         }
 
         private void CloseAllPanel()
         {
-            gameplayPanel.SetActive(false);
-            menuPanel.SetActive(false);
-            gameOverMenu.SetActive(false);
+            _gameplayPanel.SetActive(false);
+            _menuPanel.SetActive(false);
+            _gameOverPanel.SetActive(false);
         }
 
         public void ClickPauseButton()
@@ -51,7 +57,7 @@ namespace UI.GameManagement
             UtilityEvents.GamePause();
 
             CloseAllPanel();
-            menuPanel.SetActive(true);
+            _menuPanel.SetActive(true);
         }
 
         public void ClickPlayButton()
@@ -59,7 +65,7 @@ namespace UI.GameManagement
             UtilityEvents.GameResume();
 
             CloseAllPanel();
-            gameplayPanel.SetActive(true);
+            _gameplayPanel.SetActive(true);
         }
 
         public void ClickRestartButton()
@@ -75,7 +81,14 @@ namespace UI.GameManagement
         private void GameOverPanel()
         {
             CloseAllPanel();
-            gameOverMenu.SetActive(true);
+            _gameOverPanel.SetActive(true);
+        }
+
+        private void WinPanel()
+        {
+            CloseAllPanel();
+            _winPanel.SetActive(true);
+
         }
 
         private void SetUpWaveText(WaveState currentWave)
@@ -86,6 +99,13 @@ namespace UI.GameManagement
             _waveText.text = "WAVE " + waveNumber;
             StartCoroutine(FadeWaveText());
             
+        }
+        
+        private void SetUpBossText()
+        {
+            _waveText.gameObject.SetActive(true);
+            _waveText.text = "BOSS TIME";
+            StartCoroutine(FadeWaveText());
         }
 
         private IEnumerator FadeWaveText()

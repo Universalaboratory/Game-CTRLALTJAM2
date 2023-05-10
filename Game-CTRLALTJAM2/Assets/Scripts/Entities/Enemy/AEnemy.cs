@@ -29,22 +29,27 @@ namespace Entities.Enemy
 
         [Space]
         [Header("Particle Parameters")]
+        [SerializeField] public EnemyParticleSpawner _particleSpawner;
         [SerializeField] public EnemyParticlePool _particlePrefab;
         [SerializeField] public Transform _bulletSpawn;
         [SerializeField] protected float _fireRate;
-        protected EnemyParticleSpawner _particleSpawner;
         protected float timer;
+
+        [Space]
+        [Header("Body Behaviour")]
+        [SerializeField] private Transform _enemyBody;
+        [SerializeField] private Transform _weaponHolder;
+        protected SpriteRenderer _bodySP;
+
 
         private void Awake()
         {
-            healthBar.gameObject.SetActive(false);
             _currentHealth = maxHealth;
-        }
+            healthBar.gameObject.SetActive(false);
 
-        private void Start()
-        {
             _rb = GetComponent<Rigidbody2D>();
-            _particleSpawner = GetComponent<EnemyParticleSpawner>();
+            _bodySP = _enemyBody.GetComponent<SpriteRenderer>();
+
             _target = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
@@ -54,6 +59,7 @@ namespace Entities.Enemy
 
             LostHealth();
             EnemyLook(_target.position);
+            FlipBody();
             VerifyRange();
             AttackBehaviour();
         }
@@ -76,7 +82,7 @@ namespace Entities.Enemy
             _distanceToPlayer = target - transform.position;
             float angle = (Mathf.Atan2(_distanceToPlayer.y, _distanceToPlayer.x) * Mathf.Rad2Deg) - 90f;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = rotation;
+            _weaponHolder.transform.rotation = rotation;
         }
         protected virtual void MovementTowardsPlayer()
         {
@@ -89,6 +95,11 @@ namespace Entities.Enemy
             _distanceToPlayer = _target.position - transform.position;
             var distNormilize = _distanceToPlayer.normalized;
             _rb.velocity = new Vector2(distNormilize.x * _enemySpeed, distNormilize.y * _enemySpeed);
+        }
+
+        protected virtual void FlipBody()
+        {
+            var flipDir = (_target.position.x < transform.position.x) ? (_bodySP.flipX = true) : (_bodySP.flipX = false);
         }
 
         // Attack
