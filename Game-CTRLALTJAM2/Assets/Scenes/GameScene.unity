@@ -1401,8 +1401,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSpeed: 5
   _dashSpeed: 20
-  _dashTotalTimeSeconds: 0.2
-  _dashCoolDownTimeSeconds: 1
+  _dashTotalTimeSeconds: 0.5
+  _dashCoolDownTimeSeconds: 5
+  _isDashing: 0
+  _canDash: 1
 --- !u!50 &669836902
 Rigidbody2D:
   serializedVersion: 4
@@ -1544,7 +1546,7 @@ MonoBehaviour:
   _maxHelath: 10
   healthBar: {fileID: 1245603904}
   filledHealthtBar: {fileID: 74587134}
-  part: {fileID: 0}
+  _canDie: 0
 --- !u!1 &721638507
 GameObject:
   m_ObjectHideFlags: 0
