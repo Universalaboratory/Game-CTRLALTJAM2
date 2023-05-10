@@ -15,8 +15,12 @@ namespace Entities.Player
         [SerializeField] private float _dashSpeed;
         [SerializeField] private float _dashTotalTimeSeconds;
         [SerializeField] private float _dashCoolDownTimeSeconds;
-        private bool _isDashing;
-        private bool _canDash = true;
+        [SerializeField] private bool _isDashing;
+        [SerializeField] private bool _canDash = true;
+        private float _timer;
+        private bool _dashInput = false;
+
+        private Coroutine _dashCoroutine;
 
         private Vector2 _movement;
 
@@ -34,6 +38,8 @@ namespace Entities.Player
         private void OnEnable()
         {
             _input.Player.Dash.started += OnDash;
+            _input.Player.Dash.canceled += OnDashCanceled;
+
             _input.Enable();
         }
 
@@ -41,6 +47,7 @@ namespace Entities.Player
         {
             _input.Disable();
             _input.Player.Dash.started -= OnDash;
+            _input.Player.Dash.canceled -= OnDashCanceled;
         }
 
         private void Update()
@@ -49,6 +56,9 @@ namespace Entities.Player
 
             GetPlayerMovement();
             LookAtMouse();
+
+
+            DashCoolDown();
         }
 
         private void FixedUpdate()
@@ -60,12 +70,15 @@ namespace Entities.Player
             }
 
             MovePlayer();
-            Dash();
+
+            if (_dashInput && _canDash)
+                Dash();
         }
 
         private void GetPlayerMovement() => _movement = _input.Player.Movement.ReadValue<Vector2>().normalized;
 
-        private void OnDash(InputAction.CallbackContext context) => _isDashing = true;
+        private void OnDash(InputAction.CallbackContext context) => _dashInput = true;
+        private void OnDashCanceled(InputAction.CallbackContext context) => _dashInput = false;
 
         private void MovePlayer()
         {
@@ -76,22 +89,38 @@ namespace Entities.Player
 
         private void Dash()
         {
-            if (_isDashing && _canDash) StartCoroutine(DashBehaviour());
+            _canDash = false;
+            _isDashing = true;
+            GameplayEvents.Dash(_dashCoolDownTimeSeconds);
+
+            StartCoroutine(DashBehaviour());
+        }
+
+        private void DashCoolDown()
+        {
+            _timer += Time.deltaTime;
+            if (_timer >= _dashCoolDownTimeSeconds)
+            {
+                _canDash = true;
+                Debug.LogWarning(_canDash);
+                _timer = 0;
+                return;
+            }
         }
 
         private IEnumerator DashBehaviour()
         {
-            _rb.velocity = new Vector2(_movement.x * _dashSpeed, _movement.y * _dashSpeed);
+            Debug.LogWarning("Começou Dash");
+           
+            _rb.velocity = Vector2.zero;
+
+            var dashForce = new Vector2(_movement.x * _dashSpeed, _movement.y * _dashSpeed);
+            _rb.AddForce(dashForce, ForceMode2D.Impulse);
 
             yield return new WaitForSeconds(_dashTotalTimeSeconds);
             _isDashing = false;
-            _canDash = false;
 
-            _rb.velocity = new Vector2(_movement.x * _playerSpeed, _movement.y * _playerSpeed);
-
-            yield return new WaitForSeconds(_dashCoolDownTimeSeconds);
-
-            _canDash = true;
+            Debug.LogWarning("Terminou Dash");
         }
 
         private void LookAtMouse()

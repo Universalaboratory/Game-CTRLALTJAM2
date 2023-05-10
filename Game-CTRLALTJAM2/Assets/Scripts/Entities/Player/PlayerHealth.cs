@@ -15,7 +15,9 @@ namespace Entities.Player
         [SerializeField] protected Image filledHealthtBar;
         private float _currentHealth;
 
-        public ParticleSystem part;
+        [Header("Test")]
+        [SerializeField] private bool _canDie = true;
+
         public List<ParticleCollisionEvent> collisionEvents;
 
 
@@ -30,6 +32,8 @@ namespace Entities.Player
 
         private void OnParticleCollision(GameObject other)
         {
+            if (!_canDie) return;
+
             LostLife(1);
         }
 

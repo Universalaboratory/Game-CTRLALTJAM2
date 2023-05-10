@@ -8,11 +8,11 @@ namespace UI.GameManagement
 {
     public class UIMenuPause : MonoBehaviour
     {
-
         [Header("Panels")]
         [SerializeField] private GameObject menuPanel;
         [SerializeField] private GameObject pauseButton;
         [SerializeField] private GameObject gameOverMenu;
+        [SerializeField] private GameObject HUDPanel;
 
         [Header("Texts")]
         [SerializeField] private TMP_Text _waveText;
@@ -21,6 +21,7 @@ namespace UI.GameManagement
         void Start()
         {
             Time.timeScale = 1;
+            HUDPanel.SetActive(true);
             menuPanel.SetActive(false);
             gameOverMenu.SetActive(false);
             pauseButton.SetActive(true);
@@ -44,6 +45,7 @@ namespace UI.GameManagement
 
             menuPanel.SetActive(true);
             pauseButton.SetActive(false);
+            HUDPanel.SetActive(false);
         }
 
         public void ClickPlayButton()
@@ -52,6 +54,7 @@ namespace UI.GameManagement
 
             menuPanel.SetActive(false);
             pauseButton.SetActive(true);
+            HUDPanel.SetActive(true);
         }
 
         public void ClickRestartButton()
@@ -68,6 +71,7 @@ namespace UI.GameManagement
         {
             pauseButton.SetActive(false);
             menuPanel.SetActive(false);
+            HUDPanel.SetActive(false);
             gameOverMenu.SetActive(true);
         }
 
@@ -78,11 +82,13 @@ namespace UI.GameManagement
             _waveText.gameObject.SetActive(true);
             _waveText.text = "WAVE " + waveNumber;
             StartCoroutine(FadeWaveText());
-
         }
 
         private IEnumerator FadeWaveText()
         {
+            // pode fazer um fade melhor
+            // usando While e o alpha
+
             yield return new WaitForSeconds(_waveTextFadeTimer);
             _waveText.gameObject.SetActive(false);
         }
