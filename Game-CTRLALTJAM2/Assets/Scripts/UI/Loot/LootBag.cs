@@ -8,6 +8,7 @@ namespace UI.LootSystem
     {
         public GameObject droppedItemPrefab;
         public List<Loot> lootList = new List<Loot>();
+        List<Loot> droppedItem;
 
         List<Loot> GetDroppedItem()
         {
@@ -34,7 +35,7 @@ namespace UI.LootSystem
 
         public void SpawnLoot(Vector3 lootPos)
         {
-            List<Loot> droppedItem = GetDroppedItem();
+            droppedItem = GetDroppedItem();
 
             if (droppedItem != null)
             {
@@ -42,6 +43,8 @@ namespace UI.LootSystem
                 {
                     Vector3 newPos = new Vector3(lootPos.x + Random.Range(-1, 1), lootPos.y + Random.Range(-1, 1), 0);
                     GameObject newLoot = Instantiate(droppedItemPrefab, newPos, Quaternion.identity);
+                    newLoot.gameObject.tag = droppedItem[i].lootName;
+                    print(newLoot.gameObject.tag);
                     newLoot.GetComponent<SpriteRenderer>().sprite = droppedItem[i].lootSprite;
                 }
             }
