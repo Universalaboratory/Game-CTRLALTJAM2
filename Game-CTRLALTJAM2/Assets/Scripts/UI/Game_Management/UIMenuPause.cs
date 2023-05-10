@@ -10,9 +10,8 @@ namespace UI.GameManagement
     {
         [Header("Panels")]
         [SerializeField] private GameObject menuPanel;
-        [SerializeField] private GameObject pauseButton;
         [SerializeField] private GameObject gameOverMenu;
-        [SerializeField] private GameObject HUDPanel;
+        [SerializeField] private GameObject gameplayPanel;
 
         [Header("Texts")]
         [SerializeField] private TMP_Text _waveText;
@@ -22,10 +21,8 @@ namespace UI.GameManagement
         void Start()
         {
             Time.timeScale = 1;
-            HUDPanel.SetActive(true);
-            menuPanel.SetActive(false);
-            gameOverMenu.SetActive(false);
-            pauseButton.SetActive(true);
+            CloseAllPanel();
+            gameplayPanel.SetActive(true);
 
             _waveTextColor = _waveText.color;
         }
@@ -42,22 +39,27 @@ namespace UI.GameManagement
             GameplayEvents.OnGameOver -= GameOverPanel;
         }
 
+        private void CloseAllPanel()
+        {
+            gameplayPanel.SetActive(false);
+            menuPanel.SetActive(false);
+            gameOverMenu.SetActive(false);
+        }
+
         public void ClickPauseButton()
         {
             UtilityEvents.GamePause();
 
+            CloseAllPanel();
             menuPanel.SetActive(true);
-            pauseButton.SetActive(false);
-            HUDPanel.SetActive(false);
         }
 
         public void ClickPlayButton()
         {
             UtilityEvents.GameResume();
 
-            menuPanel.SetActive(false);
-            pauseButton.SetActive(true);
-            HUDPanel.SetActive(true);
+            CloseAllPanel();
+            gameplayPanel.SetActive(true);
         }
 
         public void ClickRestartButton()
@@ -72,9 +74,7 @@ namespace UI.GameManagement
 
         private void GameOverPanel()
         {
-            pauseButton.SetActive(false);
-            menuPanel.SetActive(false);
-            HUDPanel.SetActive(false);
+            CloseAllPanel();
             gameOverMenu.SetActive(true);
         }
 

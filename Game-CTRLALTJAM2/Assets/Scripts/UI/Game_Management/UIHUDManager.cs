@@ -28,16 +28,11 @@ namespace UI.GameManagement
 
         private IEnumerator FillDashBar(float coolDownTimerSeconds)
         {
-            Debug.LogWarning("Começou Timer");
-
             while (_dashFillBar.fillAmount != 1)
             {
                 _dashFillBar.fillAmount += 1 / coolDownTimerSeconds * Time.deltaTime;
                 yield return null;
             }
-
-            Debug.LogWarning("Terminou Timer");
-
         }
     }
 }

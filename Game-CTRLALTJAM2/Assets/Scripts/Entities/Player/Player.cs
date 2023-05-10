@@ -26,13 +26,13 @@ namespace Entities.Player
 
         private Rigidbody2D _rb;
         private InputControl _input;
-        private Camera mainCamera;
+
 
         private void Awake()
         {
             _input = new InputControl();
             _rb = GetComponent<Rigidbody2D>();
-            mainCamera = Camera.main;
+           
         }
 
         private void OnEnable()
@@ -55,7 +55,6 @@ namespace Entities.Player
             if (GameManager.Instance._state != GameState.GAMEPLAY) return;
 
             GetPlayerMovement();
-            LookAtMouse();
 
             if (!_canDash)         
                 DashCoolDown();
@@ -123,12 +122,6 @@ namespace Entities.Player
             Debug.LogWarning("Terminou Dash");
         }
 
-        private void LookAtMouse()
-        {
-            Vector2 dir = mainCamera.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
-            float angle = (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg) - 90f;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = rotation;
-        }
+
     }
 }
