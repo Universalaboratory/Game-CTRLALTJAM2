@@ -1400,9 +1400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpeed: 5
-  _dashSpeed: 20
-  _dashTotalTimeSeconds: 0.5
-  _dashCoolDownTimeSeconds: 5
+  _dashSpeed: 15
+  _dashCoolDownTimeSeconds: 1
   _isDashing: 0
   _canDash: 1
 --- !u!50 &669836902

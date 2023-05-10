@@ -13,10 +13,10 @@ namespace Entities.Player
 
         [Header("Player Dash Parameters")]
         [SerializeField] private float _dashSpeed;
-        [SerializeField] private float _dashTotalTimeSeconds;
         [SerializeField] private float _dashCoolDownTimeSeconds;
         [SerializeField] private bool _isDashing;
         [SerializeField] private bool _canDash = true;
+        private float _dashTotalDistance = 0.2f;
         private float _timer;
         private bool _dashInput = false;
 
@@ -57,11 +57,8 @@ namespace Entities.Player
             GetPlayerMovement();
             LookAtMouse();
 
-            if (_isDashing)
-            {
+            if (!_canDash)         
                 DashCoolDown();
-
-            }
         }
 
         private void FixedUpdate()
@@ -120,7 +117,7 @@ namespace Entities.Player
             var dashForce = new Vector2(_movement.x * _dashSpeed, _movement.y * _dashSpeed);
             _rb.AddForce(dashForce, ForceMode2D.Impulse);
 
-            yield return new WaitForSeconds(_dashTotalTimeSeconds);
+            yield return new WaitForSeconds(_dashTotalDistance);
             _isDashing = false;
 
             Debug.LogWarning("Terminou Dash");
