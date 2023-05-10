@@ -9,7 +9,10 @@ namespace UI.GameManagement
     [RequireComponent(typeof(BoxCollider2D))]
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _prefab;
+        [Header("Prefab List")]
+        [SerializeField] private GameObject[] _prefabEnemyList;
+
+        [Space]
         [SerializeField] private int _enemiesToSpawnPerWave;
         [SerializeField] private List<GameObject> _liveEnemyList = new List<GameObject>();
 
@@ -27,11 +30,6 @@ namespace UI.GameManagement
             _spawnAreaSize.y = _spawnArea.size.y;
         }
 
-        private void Start()
-        {
-            SpawnEnemy(WaveState.WAVE_1);
-        }
-
         private void OnEnable()
         {
             GameplayEvents.OnNextWave += SpawnEnemy;
@@ -40,9 +38,9 @@ namespace UI.GameManagement
 
         private void OnDisable()
         {
-          
+
             GameplayEvents.OnNextWave -= SpawnEnemy;
-            GameplayEvents.OnEnemyDeath -= RemoveEnemyFromList;            
+            GameplayEvents.OnEnemyDeath -= RemoveEnemyFromList;
         }
 
         private Vector2 GetPosition()
@@ -58,9 +56,11 @@ namespace UI.GameManagement
         {
             var totalEnemiesToSpawn = _enemiesToSpawnPerWave + (int)currentWave;
 
-            for (int i = totalEnemiesToSpawn; i > 0; i--)
+            for (int i = 0; i < totalEnemiesToSpawn; i++)
             {
-                GameObject enemy = Instantiate(_prefab, GetPosition(), Quaternion.identity);
+                var enemyToSpawn = Random.Range(0, _prefabEnemyList.Length);
+
+                GameObject enemy = Instantiate(_prefabEnemyList[enemyToSpawn], GetPosition(), Quaternion.identity);
                 AddEnemyToList(enemy);
             }
         }
@@ -78,8 +78,8 @@ namespace UI.GameManagement
 
         private void CheckTotalEnemyAlive()
         {
-            if (_liveEnemyList.Count == 0)           
-                _waveManager.NextWave();            
+            if (_liveEnemyList.Count == 0)
+                _waveManager.NextWave();
         }
     }
 

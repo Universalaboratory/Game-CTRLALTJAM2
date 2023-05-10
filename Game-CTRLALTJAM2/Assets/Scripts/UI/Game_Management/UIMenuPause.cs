@@ -16,8 +16,9 @@ namespace UI.GameManagement
 
         [Header("Texts")]
         [SerializeField] private TMP_Text _waveText;
-        [SerializeField] private float _waveTextFadeTimer = 2.5f; 
-        
+        [SerializeField] private float _waveTextFadeTimer = 2.5f;
+        private Color _waveTextColor;
+
         void Start()
         {
             Time.timeScale = 1;
@@ -25,6 +26,8 @@ namespace UI.GameManagement
             menuPanel.SetActive(false);
             gameOverMenu.SetActive(false);
             pauseButton.SetActive(true);
+
+            _waveTextColor = _waveText.color;
         }
 
         private void OnEnable()
@@ -36,11 +39,11 @@ namespace UI.GameManagement
         private void OnDisable()
         {
             GameplayEvents.OnNextWave -= SetUpWaveText;
-            GameplayEvents.OnGameOver -= GameOverPanel;            
+            GameplayEvents.OnGameOver -= GameOverPanel;
         }
 
         public void ClickPauseButton()
-        {           
+        {
             UtilityEvents.GamePause();
 
             menuPanel.SetActive(true);
@@ -66,7 +69,7 @@ namespace UI.GameManagement
         {
             SceneManager.LoadScene(Constants.MENU_START_SCENE);
         }
-            
+
         private void GameOverPanel()
         {
             pauseButton.SetActive(false);
@@ -82,15 +85,25 @@ namespace UI.GameManagement
             _waveText.gameObject.SetActive(true);
             _waveText.text = "WAVE " + waveNumber;
             StartCoroutine(FadeWaveText());
+            
         }
 
         private IEnumerator FadeWaveText()
         {
-            // pode fazer um fade melhor
-            // usando While e o alpha
+            var _alpha = _waveText.color.a;
 
-            yield return new WaitForSeconds(_waveTextFadeTimer);
+            yield return new WaitForSeconds(2f);
+
+            while (_waveText.color.a >= 0)
+            {
+                _alpha -= Time.deltaTime;
+                _waveText.color = new Color(_waveText.color.r, _waveText.color.g, _waveText.color.b, _alpha);
+
+                yield return null;
+            }
+
             _waveText.gameObject.SetActive(false);
+            _waveText.color = _waveTextColor;
         }
     }
 }
