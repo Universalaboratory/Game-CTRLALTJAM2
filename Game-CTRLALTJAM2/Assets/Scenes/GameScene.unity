@@ -3600,7 +3600,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e1fcce3a0958c43b6bd9a7e72d7e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 2396348134190186677, guid: 77bee7671a10d6646b6e804afb8f4aaf, type: 3}
+  _prefabEnemyList:
+  - {fileID: 2396348134190186677, guid: 77bee7671a10d6646b6e804afb8f4aaf, type: 3}
+  - {fileID: 6013498954311069417, guid: 6f117a58491c5e7418f5770fac290ec9, type: 3}
   _enemiesToSpawnPerWave: 0
   _liveEnemyList: []
 --- !u!114 &2026759728
