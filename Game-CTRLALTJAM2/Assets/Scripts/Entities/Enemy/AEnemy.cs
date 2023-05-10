@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UI.GameManagement;
 
-
 namespace Entities.Enemy
 {
     [RequireComponent(typeof(Rigidbody2D))]
@@ -19,7 +18,7 @@ namespace Entities.Enemy
 
         [Space]
         [Header("Movement Parameters")]
-        // _speed fica dentro de cada inimigo.
+        [SerializeField] protected float _enemySpeed;
         protected Transform _target;
         protected Rigidbody2D _rb;
 
@@ -70,13 +69,56 @@ namespace Entities.Enemy
             MovementTowardsPlayer();
         }
 
-        protected abstract void MovementTowardsPlayer();
-        protected abstract void PatrolMovement();
-        protected abstract void VerifyRange();
-        protected abstract void AttackBehaviour();
-        protected abstract void LostHealth();
-        protected abstract void Die();
 
+        // Movement
+        protected virtual void EnemyLook(Vector3 target)
+        {
+            _distanceToPlayer = target - transform.position;
+            float angle = (Mathf.Atan2(_distanceToPlayer.y, _distanceToPlayer.x) * Mathf.Rad2Deg) - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = rotation;
+        }
+        protected virtual void MovementTowardsPlayer()
+        {
+            if (_isPlayerInRange)
+            {
+                _rb.velocity = Vector2.zero;
+                return;
+            }
+
+            _distanceToPlayer = _target.position - transform.position;
+            var distNormilize = _distanceToPlayer.normalized;
+            _rb.velocity = new Vector2(distNormilize.x * _enemySpeed, distNormilize.y * _enemySpeed);
+        }
+
+        // Attack
+        protected virtual void VerifyRange()
+        {
+            var distX = Mathf.Abs(_distanceToPlayer.x);
+            var distY = Mathf.Abs(_distanceToPlayer.y);
+
+            _isPlayerInRange = (distX < _minDistToAttack && distY < _minDistToAttack) ? true : false;
+        }
+        protected virtual void AttackBehaviour()
+        {
+            if (!_isPlayerInRange) return;
+
+            timer += Time.deltaTime;
+
+            float nextTimeToFire = 1 / _fireRate;
+
+            if (timer >= nextTimeToFire)
+            {
+                _particleSpawner._pool.Get();
+                timer = 0;
+            }
+        }
+
+        // Health
+        protected virtual void LostHealth()
+        {
+            if (_currentHealth <= 0) Die();
+        }
         protected virtual void HealthBarFiller(float damage)
         {
             _currentHealth -= damage;
@@ -85,13 +127,7 @@ namespace Entities.Enemy
             filledHealthtBar.fillAmount = Mathf.Lerp(filledHealthtBar.fillAmount, fillAmountPercentage, 1);
         }
 
-        protected virtual void EnemyLook(Vector3 target)
-        {
-            _distanceToPlayer = target - transform.position;
-            float angle = (Mathf.Atan2(_distanceToPlayer.y, _distanceToPlayer.x) * Mathf.Rad2Deg) - 90f;
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = rotation;
-        }
+        protected abstract void Die();
     }
 }
 
