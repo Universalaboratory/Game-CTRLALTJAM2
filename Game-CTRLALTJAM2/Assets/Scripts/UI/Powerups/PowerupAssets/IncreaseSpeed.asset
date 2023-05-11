@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: IncreaseSpeed
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 6cc5103edc9f0dd4f80e8274c73dfeac, type: 3}
-  Name: IncreaseSpeed
+  type: 2
+  tag: IncreaseSpeed
   dropChance: 10
   value: 1.8
   coolDownSeconds: 5

@@ -2125,7 +2125,7 @@ MonoBehaviour:
   healthBar: {fileID: 1245603904}
   filledHealthtBar: {fileID: 74587134}
   _currentHealth: 0
-  _canDie: 0
+  _canDie: 1
 --- !u!114 &669836909
 MonoBehaviour:
   m_ObjectHideFlags: 0
