@@ -5,21 +5,26 @@ namespace UI.PowerupSystem
 {
     public class SpawnPowerup : MonoBehaviour
     {
-        private float i;
+        private PowerupList _powerUpList; 
+
+        private float i = 0;
 
         void Start ()
         {
-            i = 0;
+            _powerUpList = GetComponent<PowerupList>();
         }
 
         void Update()
         {
 
-            if (i < 7f)
+            if (i < 3f)
                 i += Time.deltaTime;
             else
             {
-                GetComponent<PowerupList>().SpawnPowerup(gameObject.transform.position);
+                //GetComponent<PowerupList>().SpawnPowerup(gameObject.transform.position);
+
+                //Fazer o Spawn numa area determinada
+                _powerUpList.SpawnAllPowerUps(gameObject.transform.position);
                 i = 0;
             }
             

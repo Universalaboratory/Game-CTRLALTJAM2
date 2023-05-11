@@ -2,17 +2,17 @@ using UnityEngine;
 
 namespace UI.LootSystem
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "ScriptableObjects/Loot")]
     public class Loot : ScriptableObject
     {
-        public Sprite lootSprite;
-        public string lootName;
+        public Sprite Sprite;
+        public string Name;
         public int dropChance;
 
-        public Loot(string lootName, int dropChance)
-        {
-            this.lootName = lootName;
-            this.dropChance = dropChance;
-        }
+        //public Loot(string lootName, int dropChance)
+        //{
+        //    this.Name = lootName;
+        //    this.dropChance = dropChance;
+        //}
     }
 }

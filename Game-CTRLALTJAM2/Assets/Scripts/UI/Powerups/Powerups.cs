@@ -2,17 +2,24 @@ using UnityEngine;
 
 namespace UI.PowerupSystem
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "ScriptableObjects/PowerUp")]
     public class Powerups : ScriptableObject
     {
-        public Sprite powerupSprite;
-        public string powerupName;
+        public Sprite Sprite;
+        public PowerUpTypes type;
+        public string tag;
         public int dropChance;
 
-        public Powerups(string powerupName, int dropChance)
-        {
-            this.powerupName = powerupName;
-            this.dropChance = dropChance;
-        }
+        public float value;
+        public float coolDownSeconds;
+        public bool isOn;
+    }
+
+    public enum PowerUpTypes
+    {
+        DAMAGE,
+        LIFE,
+        SPEED,
+        DASH_SPEED
     }
 }

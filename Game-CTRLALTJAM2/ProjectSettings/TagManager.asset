@@ -7,10 +7,10 @@ TagManager:
   - Enemy
   - Bread
   - Popcorn
-  - Dash
   - IncreaseLife
   - IncreaseSpeed
   - IncreaseDamage
+  - IncreaseDash
   layers:
   - Default
   - TransparentFX

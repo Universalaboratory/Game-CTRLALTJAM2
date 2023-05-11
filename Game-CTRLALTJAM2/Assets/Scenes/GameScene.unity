@@ -2015,11 +2015,11 @@ GameObject:
   - component: {fileID: 669836900}
   - component: {fileID: 669836902}
   - component: {fileID: 669836905}
-  - component: {fileID: 669836908}
   - component: {fileID: 669836910}
   - component: {fileID: 669836901}
   - component: {fileID: 669836907}
   - component: {fileID: 669836909}
+  - component: {fileID: 669836911}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -2125,33 +2125,7 @@ MonoBehaviour:
   healthBar: {fileID: 1245603904}
   filledHealthtBar: {fileID: 74587134}
   _currentHealth: 0
-  _canDie: 0
---- !u!61 &669836908
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669836899}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  _canDie: 1
 --- !u!114 &669836909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2217,6 +2191,18 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0.02, y: 0.02, z: 0}
+--- !u!114 &669836911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669836899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594fe9b86076d764eb8aa12e922feaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &721638507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3365,12 +3351,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4dfbe4418aae04e8a042425f3f589b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedPowerupPrefab: {fileID: 283278953920714431, guid: c33f0d32a47321c40820602de27563f4, type: 3}
   powerupList:
-  - {fileID: 11400000, guid: fcf5baae2ef240542ada8367afb036d7, type: 2}
-  - {fileID: 11400000, guid: 859ef899850e6104a9c61bfbafe2fe8f, type: 2}
-  - {fileID: 11400000, guid: 37eb9fb9693a6e548941114737bc876b, type: 2}
-  - {fileID: 11400000, guid: 83bf60a8f95d2d049a26c3dc946a2c8e, type: 2}
+  - {fileID: 283278953920714431, guid: 1ecd97e3e9ba079499e0d98088e3a763, type: 3}
+  - {fileID: 283278953920714431, guid: c33f0d32a47321c40820602de27563f4, type: 3}
+  - {fileID: 283278953920714431, guid: bc9855ff9b102d24e9fc1d6061f15c3d, type: 3}
+  - {fileID: 283278953920714431, guid: c18b7a674cf82bd419a7464e0aae0c68, type: 3}
 --- !u!4 &1313129259
 Transform:
   m_ObjectHideFlags: 0

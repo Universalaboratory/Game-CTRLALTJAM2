@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3969106440397081999}
   - component: {fileID: 2291794781089146705}
   - component: {fileID: -6220469123116491535}
+  - component: {fileID: 8394894219167557047}
   m_Layer: 0
-  m_Name: Loot_Item
+  m_Name: Bread_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,3 +134,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8394894219167557047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906320369614539360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0b7878c6b95eb4d83071567fb9a223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loot: {fileID: 11400000, guid: 365249b4692f5bf49a61ac6916d4e500, type: 2}
+  _lootSprite: {fileID: 0}
+  _lootName: 
+  _dropChance: 0

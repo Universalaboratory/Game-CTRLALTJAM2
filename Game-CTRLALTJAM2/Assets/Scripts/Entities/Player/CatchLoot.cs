@@ -1,22 +1,27 @@
 using UnityEngine;
 using Utilities;
 using UI.GameManagement;
+using UI.LootSystem;
+using UI.PowerupSystem;
 
 namespace Entities.Player
 {
     public class CatchLoot : MonoBehaviour
     {
         private Player _player;
+        private PlayerPowerUpHandler _playerPowerUpHandler;
         private PlayerHealth _playerHealth;
 
         private void Start()
         {
             _player = GetComponent<Player>();
              _playerHealth = GetComponent<PlayerHealth>();
+            _playerPowerUpHandler = GetComponent<PlayerPowerUpHandler>();
         }
 
         private void OnTriggerStay2D(Collider2D other)
         {
+
             switch (other.gameObject.tag)
             {
                 case Constants.BREAD:
@@ -25,7 +30,7 @@ namespace Entities.Player
                 case Constants.POPCORN:
                     PopcornEffect(other);
                     break;
-                case Constants.DASH:
+                case Constants.INCREASE_DASH:
                     DashEffect(other);
                     break;
                 case Constants.INCREASE_LIFE:
@@ -67,30 +72,53 @@ namespace Entities.Player
 
         private void DashEffect(Collider2D self)
         {
-            // Tempo cool down
-            // aumentar velocidade
+            var values = self.gameObject.GetComponent<PowerUpBehaviour>();
 
-            Debug.LogWarning("PEGOU DASH");
-            GameplayEvents.PowerUp(5f);
+            var coolDown = values._coolDownSeconds;
+            var newSpeed = values._value;
+
+            StartCoroutine(_playerPowerUpHandler.SettingDashPowerUp(coolDown, newSpeed));
+            GameplayEvents.PowerUp(coolDown);
 
             Destroy(self.gameObject);
         }
 
         private void IncLifeEffect(Collider2D self)
         {
-            Debug.LogWarning("PEGOU VIDA");
+            var values = self.gameObject.GetComponent<PowerUpBehaviour>();
+
+            var coolDown = values._coolDownSeconds;
+            var isOn = values._isOn;
+
+            StartCoroutine(_playerPowerUpHandler.SettingLifePowerUp(coolDown, isOn));
+            GameplayEvents.PowerUp(coolDown);
+
             Destroy(self.gameObject);
         }
 
         private void IncSpeedEffect(Collider2D self)
         {
-            Debug.LogWarning("PEGOU SPEED");
+            var values = self.gameObject.GetComponent<PowerUpBehaviour>();
+
+            var coolDown = values._coolDownSeconds;
+            var newSpeed = values._value;
+
+            StartCoroutine(_playerPowerUpHandler.SettingSpeedPowerUp(coolDown, newSpeed));
+            GameplayEvents.PowerUp(coolDown);
+
             Destroy(self.gameObject);
         }
 
         private void IncDamageEffect(Collider2D self)
         {
-            Debug.LogWarning("PEGOU DAMAGE");
+            var values = self.gameObject.GetComponent<PowerUpBehaviour>();
+
+            var coolDown = values._coolDownSeconds;
+            var newDamage= values._value;
+
+            StartCoroutine(_playerPowerUpHandler.SettingDamagePowerUp(coolDown, newDamage));
+            GameplayEvents.PowerUp(coolDown);
+
             Destroy(self.gameObject);
         }
     }
