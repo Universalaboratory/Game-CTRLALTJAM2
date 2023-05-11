@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
 using UI.GameManagement;
+using Cinemachine;
 
 
 namespace Entities.Player
@@ -18,21 +19,26 @@ namespace Entities.Player
         [Header("Test")]
         [SerializeField] private bool _canDie = true;
 
-        public List<ParticleCollisionEvent> collisionEvents;
-
         public bool CanDie { get => _canDie; set => _canDie = value; }
+
+        private List<ParticleCollisionEvent> collisionEvents;
+
+        private CinemachineImpulseSource _impulseSource;
+
 
         private void Start()
         {
             _currentHealth = _maxHelath;
 
             collisionEvents = new List<ParticleCollisionEvent>();
+            _impulseSource = GetComponent<CinemachineImpulseSource>();
         }
 
         private void OnParticleCollision(GameObject other)
         {
             if (!_canDie) return;
 
+            CameraShakeManager.Instance.CameraShake(_impulseSource);
             LostLife(1);
         }
 
