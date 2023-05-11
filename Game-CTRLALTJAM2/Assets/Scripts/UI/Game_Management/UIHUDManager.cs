@@ -50,8 +50,6 @@ namespace UI.GameManagement
 
         private void SettingPowerUpBar(float coolDownTimerSeconds)
         {
-            Debug.LogWarning("POWER UP HUD");
-
             _powerUpBarHolder.SetActive(true);
 
             _powerUpFillBar.fillAmount = 1;
@@ -60,7 +58,7 @@ namespace UI.GameManagement
 
         private IEnumerator FillPowerUpBar(float coolDownTimerSeconds)
         {
-            while (_powerUpFillBar.fillAmount != 1)
+            while (_powerUpFillBar.fillAmount != 0)
             {
                 _powerUpFillBar.fillAmount -= 1 / coolDownTimerSeconds * Time.deltaTime;
                 yield return null;
