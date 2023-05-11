@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b0620b578fba440a75912b05c68771, type: 3}
   m_Name: IncreaseDamage
   m_EditorClassIdentifier: 
-  powerupSprite: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
-  powerupName: IncreaseDamage
+  Sprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
+  Name: IncreaseDamage
   dropChance: 10
+  value: 3
+  coolDownSeconds: 5
+  isOn: 0

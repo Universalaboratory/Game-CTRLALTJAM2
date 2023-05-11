@@ -1,6 +1,8 @@
 using UnityEngine;
 using Utilities;
 using UI.GameManagement;
+using UI.LootSystem;
+using UI.PowerupSystem;
 
 namespace Entities.Player
 {
@@ -25,7 +27,7 @@ namespace Entities.Player
                 case Constants.POPCORN:
                     PopcornEffect(other);
                     break;
-                case Constants.DASH:
+                case Constants.INCREASE_DASH:
                     DashEffect(other);
                     break;
                 case Constants.INCREASE_LIFE:
@@ -69,9 +71,14 @@ namespace Entities.Player
         {
             // Tempo cool down
             // aumentar velocidade
-
             Debug.LogWarning("PEGOU DASH");
-            GameplayEvents.PowerUp(5f);
+
+            var values = self.gameObject.GetComponent<PowerUpBehaviour>();
+
+            var coolDown = values._coolDownSeconds;
+
+            _player.DashSpeed *= values._value;
+            GameplayEvents.PowerUp(coolDown);
 
             Destroy(self.gameObject);
         }

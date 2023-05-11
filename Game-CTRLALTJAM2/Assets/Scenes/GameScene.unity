@@ -3365,12 +3365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4dfbe4418aae04e8a042425f3f589b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedPowerupPrefab: {fileID: 283278953920714431, guid: c33f0d32a47321c40820602de27563f4, type: 3}
-  powerupList:
-  - {fileID: 11400000, guid: fcf5baae2ef240542ada8367afb036d7, type: 2}
-  - {fileID: 11400000, guid: 859ef899850e6104a9c61bfbafe2fe8f, type: 2}
-  - {fileID: 11400000, guid: 37eb9fb9693a6e548941114737bc876b, type: 2}
-  - {fileID: 11400000, guid: 83bf60a8f95d2d049a26c3dc946a2c8e, type: 2}
+  powerupList: []
 --- !u!4 &1313129259
 Transform:
   m_ObjectHideFlags: 0

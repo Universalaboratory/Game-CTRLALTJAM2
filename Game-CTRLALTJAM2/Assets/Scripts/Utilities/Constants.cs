@@ -15,7 +15,7 @@ namespace Utilities
         //COLLECTABLES NAMES
         public const string BREAD = "Bread";
         public const string POPCORN = "Popcorn";
-        public const string DASH = "Dash";
+        public const string INCREASE_DASH = "IncreaseDash";
         public const string INCREASE_LIFE = "IncreaseLife";
         public const string INCREASE_SPEED = "IncreaseSpeed";
         public const string INCREASE_DAMAGE = "IncreaseDamage";
