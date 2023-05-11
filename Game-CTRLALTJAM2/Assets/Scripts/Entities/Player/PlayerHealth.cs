@@ -11,20 +11,24 @@ namespace Entities.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
-        public float _maxHelath;
-        public GameObject healthBar;
-        public Image filledHealthtBar;
-        public float _currentHealth;
+        [SerializeField] private float _maxHelath;
+        [SerializeField] private GameObject healthBar;
+        [SerializeField] private Image filledHealthtBar;
+        [SerializeField] private float _currentHealth;
 
-        [Header("Test")]
+        [Space]
+        [Tooltip("Take No Damage When Is On. Used On Life PowerUp.")]
         [SerializeField] private bool _canDie = true;
-
-        public bool CanDie { get => _canDie; set => _canDie = value; }
 
         private List<ParticleCollisionEvent> collisionEvents;
 
         private CinemachineImpulseSource _impulseSource;
 
+
+        // Getters And Setters
+        public float MaxHealth { get => _maxHelath; }
+        public float CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
+        public bool CanDie { get => _canDie; set => _canDie = value; }
 
         private void Start()
         {

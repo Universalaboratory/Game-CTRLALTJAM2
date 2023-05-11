@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utilities;
 
 namespace Entities.Player
 {
@@ -17,22 +18,22 @@ namespace Entities.Player
         {
             switch (other.gameObject.tag)
             {
-                case "Bread":
+                case Constants.BREAD:
                     BreadEffect(other);
                     break;
-                case "Popcorn":
+                case Constants.POPCORN:
                     PopcornEffect(other);
                     break;
-                case "Dash":
+                case Constants.DASH:
                     DashEffect(other);
                     break;
-                case "IncreaseLife":
+                case Constants.INCREASE_LIFE:
                     IncLifeEffect(other);
                     break;
-                case "IncreaseSpeed":
+                case Constants.INCREASE_SPEED:
                     IncSpeedEffect(other);
                     break;
-                case "IncreaseDamage":
+                case Constants.INCREASE_DAMAGE:
                     IncDamageEffect(other);
                     break;
                 default:
@@ -43,9 +44,9 @@ namespace Entities.Player
 
         private void BreadEffect(Collider2D self)
         {
-            if (_playerHealth._currentHealth < _playerHealth._maxHelath)
+            if (_playerHealth.CurrentHealth < _playerHealth.MaxHealth)
             {
-                float heal = _playerHealth._maxHelath * 0.3f;
+                float heal = _playerHealth.MaxHealth * 0.3f;
 
                 _playerHealth.RestoredLife(heal);
                 Destroy(self.gameObject);
@@ -54,9 +55,9 @@ namespace Entities.Player
 
         private void PopcornEffect(Collider2D self)
         {
-            if (_playerHealth._currentHealth < _playerHealth._maxHelath)
+            if (_playerHealth.CurrentHealth < _playerHealth.MaxHealth)
             {
-                float heal = _playerHealth._maxHelath * 0.1f;
+                float heal = _playerHealth.MaxHealth * 0.1f;
 
                 _playerHealth.RestoredLife(heal);
                 Destroy(self.gameObject);
@@ -65,13 +66,7 @@ namespace Entities.Player
 
         private void DashEffect(Collider2D self)
         {
-            // Reduz o tempo de Cool Down E
-            // Aumenta a Velocidade
-
-            //_player.DashCoolDownTimeSeconds = 
-
-
-
+            
             Destroy(self.gameObject);
         }
 

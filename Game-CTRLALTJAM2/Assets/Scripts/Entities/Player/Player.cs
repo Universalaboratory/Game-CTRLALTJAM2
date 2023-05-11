@@ -20,23 +20,20 @@ namespace Entities.Player
         private float _timer;
         private bool _dashInput = false;
 
-        // Properties to use on Catch Loot Power Ups.
-        public float PlayerSpeed { get => _playerSpeed; set => _playerSpeed = value; }
-
-        public float DashCoolDownTimeSeconds { get => _dashCoolDownTimeSeconds; set => _dashCoolDownTimeSeconds = value; }
-        public float DashSpeed { get => _dashSpeed; set => _dashSpeed = value; }
-
         private Vector2 _movement;
 
         private Rigidbody2D _rb;
         private InputControl _input;
 
+        // Getters And Setters
+        public float PlayerSpeed { get => _playerSpeed; set => _playerSpeed = value; }
+        public float DashCoolDownTimeSeconds { get => _dashCoolDownTimeSeconds; set => _dashCoolDownTimeSeconds = value; }
+        public float DashSpeed { get => _dashSpeed; set => _dashSpeed = value; }
 
         private void Awake()
         {
             _input = new InputControl();
-            _rb = GetComponent<Rigidbody2D>();
-           
+            _rb = GetComponent<Rigidbody2D>();        
         }
 
         private void OnEnable()
