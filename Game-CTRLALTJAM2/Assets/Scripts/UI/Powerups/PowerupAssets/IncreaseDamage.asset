@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: IncreaseDamage
   dropChance: 10
   value: 3
-  coolDownSeconds: 5
+  coolDownSeconds: 10
   isOn: 0

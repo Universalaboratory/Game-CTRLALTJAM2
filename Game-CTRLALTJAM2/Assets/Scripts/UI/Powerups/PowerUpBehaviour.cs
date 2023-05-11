@@ -9,7 +9,7 @@ namespace UI.PowerupSystem
         [SerializeField] public Powerups _powerUp;
 
         [HideInInspector] public SpriteRenderer _Sprite;
-        [HideInInspector] public string _Name;
+        [HideInInspector] public PowerUpTypes _type;
         [HideInInspector] public int _dropChance;
                           
         [HideInInspector] public float _value;
@@ -21,7 +21,8 @@ namespace UI.PowerupSystem
             _Sprite = GetComponent<SpriteRenderer>();
 
             _Sprite.sprite = _powerUp.Sprite;
-            gameObject.tag = _powerUp.name;
+            gameObject.tag = _powerUp.tag;
+            _type= _powerUp.type;
             _dropChance = _powerUp.dropChance;
 
             _value = _powerUp.value;

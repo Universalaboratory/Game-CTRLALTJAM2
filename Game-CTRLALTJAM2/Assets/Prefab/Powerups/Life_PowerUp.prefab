@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1626768720311136971}
   m_Layer: 0
   m_Name: Life_PowerUp
-  m_TagString: Untagged
+  m_TagString: IncreaseLife
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _powerUp: {fileID: 11400000, guid: 859ef899850e6104a9c61bfbafe2fe8f, type: 2}
   _Sprite: {fileID: 0}
-  _Name: 
+  _type: 0
   _dropChance: 0
   _value: 0
   _coolDownSeconds: 0

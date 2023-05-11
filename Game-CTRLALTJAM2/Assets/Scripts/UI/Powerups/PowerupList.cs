@@ -19,13 +19,10 @@ namespace UI.PowerupSystem
 
                 var rndDropChance = Random.Range(0, 100);
 
-                Debug.LogWarning($"Drop Chance = {PUDropChance}, Random = {rndDropChance}");
-
                 if (PUDropChance > rndDropChance)
                 {
 
                     GameObject newPowerUp = Instantiate(powerUp, GetRandomPosition(pos), Quaternion.identity);
-                    Debug.LogWarning($"Criou {newPowerUp}");
                 }
             }
         }

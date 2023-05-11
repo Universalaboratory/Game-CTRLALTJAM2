@@ -16,5 +16,5 @@ MonoBehaviour:
   Name: IncreaseDash
   dropChance: 100
   value: 1.5
-  coolDownSeconds: 3.5
+  coolDownSeconds: 3
   isOn: 0
