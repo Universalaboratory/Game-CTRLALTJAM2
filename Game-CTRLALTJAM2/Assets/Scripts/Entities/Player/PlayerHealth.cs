@@ -20,6 +20,7 @@ namespace Entities.Player
 
         public List<ParticleCollisionEvent> collisionEvents;
 
+        public bool CanDie { get => _canDie; set => _canDie = value; }
 
         private void Start()
         {

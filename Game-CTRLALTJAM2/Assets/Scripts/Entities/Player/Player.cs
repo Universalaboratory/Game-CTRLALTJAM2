@@ -20,7 +20,11 @@ namespace Entities.Player
         private float _timer;
         private bool _dashInput = false;
 
-        private Coroutine _dashCoroutine;
+        // Properties to use on Catch Loot Power Ups.
+        public float PlayerSpeed { get => _playerSpeed; set => _playerSpeed = value; }
+
+        public float DashCoolDownTimeSeconds { get => _dashCoolDownTimeSeconds; set => _dashCoolDownTimeSeconds = value; }
+        public float DashSpeed { get => _dashSpeed; set => _dashSpeed = value; }
 
         private Vector2 _movement;
 

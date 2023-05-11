@@ -4,10 +4,12 @@ namespace Entities.Player
 {
     public class CatchLoot : MonoBehaviour
     {
+        private Player _player;
         private PlayerHealth _playerHealth;
 
         private void Start()
         {
+            _player = GetComponent<Player>();
              _playerHealth = GetComponent<PlayerHealth>();
         }
 
@@ -63,21 +65,31 @@ namespace Entities.Player
 
         private void DashEffect(Collider2D self)
         {
+            // Reduz o tempo de Cool Down E
+            // Aumenta a Velocidade
+
+            //_player.DashCoolDownTimeSeconds = 
+
+
+
             Destroy(self.gameObject);
         }
 
         private void IncLifeEffect(Collider2D self)
         {
+            Debug.LogWarning("PEGOU VIDA");
             Destroy(self.gameObject);
         }
 
         private void IncSpeedEffect(Collider2D self)
         {
+            Debug.LogWarning("PEGOU SPEED");
             Destroy(self.gameObject);
         }
 
         private void IncDamageEffect(Collider2D self)
         {
+            Debug.LogWarning("PEGOU DAMAGE");
             Destroy(self.gameObject);
         }
     }

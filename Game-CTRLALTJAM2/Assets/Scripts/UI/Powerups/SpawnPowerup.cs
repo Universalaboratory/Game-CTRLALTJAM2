@@ -14,6 +14,7 @@ namespace UI.PowerupSystem
 
         void Update()
         {
+
             if (i < 7f)
                 i += Time.deltaTime;
             else
