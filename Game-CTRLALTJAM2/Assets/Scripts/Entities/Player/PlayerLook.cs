@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UI.GameManagement;
 
+
 namespace Entities.Player
 {
     public class PlayerLook : MonoBehaviour
@@ -31,8 +32,9 @@ namespace Entities.Player
         }
 
         private void LookAtMouse()
-        {
-            _direction = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        {            
+            Vector3 mouseWorldPoint = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            _direction = mouseWorldPoint + (_mainCamera.transform.forward * 1f);
             var dir = _direction - this.transform.position;
             float angle = (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg) - 90f;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
