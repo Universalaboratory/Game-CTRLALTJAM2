@@ -46,6 +46,8 @@ namespace UI.PowerupSystem
                     newPowerup.gameObject.tag = droppedItem[i].powerupName;
                     print(newPowerup.gameObject.tag);
                     newPowerup.GetComponent<SpriteRenderer>().sprite = droppedItem[i].powerupSprite;
+
+                    Debug.LogWarning("SPawn PU");
                 }
             }
         }

@@ -36,6 +36,9 @@ namespace UI.GameManagement
         public static event UnityAction<float> OnDash;
         public static void Dash(float dashTimer) => OnDash?.Invoke(dashTimer);
 
+        public static event UnityAction<float> OnPowerUp;
+        public static void PowerUp(float PowerUpTimer) => OnPowerUp?.Invoke(PowerUpTimer);
+        
         public static event UnityAction<WaveState> OnNextWave;
         public static void NextWave(WaveState wave) => OnNextWave?.Invoke(wave);
 

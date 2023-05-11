@@ -8,16 +8,29 @@ namespace UI.GameManagement
 
     public class UIHUDManager : MonoBehaviour
     {
+        [Header("PowerUp")]
+        [SerializeField] private GameObject _powerUpBarHolder;
+        [SerializeField] private Image _powerUpFillBar;
+
+        [Space]
+        [Header("Dash")]
         [SerializeField] private Image _dashFillBar;
+
+        private void Start()
+        {
+            _powerUpBarHolder.SetActive(false);
+        }
 
         private void OnEnable()
         {
             GameplayEvents.OnDash += SettingDashBar;
+            GameplayEvents.OnPowerUp += SettingPowerUpBar;
         }
 
         private void OnDisable()
         {
             GameplayEvents.OnDash -= SettingDashBar;
+            GameplayEvents.OnPowerUp -= SettingPowerUpBar;
         }
 
         private void SettingDashBar(float coolDownTimerSeconds)
@@ -34,6 +47,27 @@ namespace UI.GameManagement
                 yield return null;
             }
         }
+
+        private void SettingPowerUpBar(float coolDownTimerSeconds)
+        {
+            Debug.LogWarning("POWER UP HUD");
+
+            _powerUpBarHolder.SetActive(true);
+
+            _powerUpFillBar.fillAmount = 1;
+            StartCoroutine(FillPowerUpBar(coolDownTimerSeconds));
+        }
+
+        private IEnumerator FillPowerUpBar(float coolDownTimerSeconds)
+        {
+            while (_powerUpFillBar.fillAmount != 1)
+            {
+                _powerUpFillBar.fillAmount -= 1 / coolDownTimerSeconds * Time.deltaTime;
+                yield return null;
+            }
+            _powerUpBarHolder.SetActive(false);
+        }
+
     }
 }
 

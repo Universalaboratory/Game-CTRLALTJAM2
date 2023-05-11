@@ -1,5 +1,6 @@
 using UnityEngine;
 using Utilities;
+using UI.GameManagement;
 
 namespace Entities.Player
 {
@@ -66,7 +67,12 @@ namespace Entities.Player
 
         private void DashEffect(Collider2D self)
         {
-            
+            // Tempo cool down
+            // aumentar velocidade
+
+            Debug.LogWarning("PEGOU DASH");
+            GameplayEvents.PowerUp(5f);
+
             Destroy(self.gameObject);
         }
 

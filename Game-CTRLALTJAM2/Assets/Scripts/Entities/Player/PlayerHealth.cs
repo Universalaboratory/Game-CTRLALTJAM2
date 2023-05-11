@@ -27,7 +27,7 @@ namespace Entities.Player
 
         // Getters And Setters
         public float MaxHealth { get => _maxHelath; }
-        public float CurrentHealth { get => _currentHealth; set => _currentHealth = value; }
+        public float CurrentHealth { get => _currentHealth;}
         public bool CanDie { get => _canDie; set => _canDie = value; }
 
         private void Start()
