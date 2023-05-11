@@ -11,15 +11,15 @@ namespace Entities.Player
              _playerHealth = GetComponent<PlayerHealth>();
         }
 
-        private void OnTriggerStay2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D other)
         {
-            switch (collision.gameObject.tag)
+            switch (other.gameObject.tag)
             {
                 case "Bread":
-                    BreadEffect(collision);
+                    BreadEffect(other);
                     break;
                 case "Popcorn":
-                    PopcornEffect(collision);
+                    PopcornEffect(other);
                     break;
                 case "Dash":
                     DashEffect(other);
