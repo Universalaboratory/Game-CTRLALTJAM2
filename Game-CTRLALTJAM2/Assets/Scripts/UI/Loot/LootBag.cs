@@ -8,6 +8,7 @@ namespace UI.LootSystem
     {
         public GameObject droppedItemPrefab;
         public List<Loot> lootList = new List<Loot>();
+        
         List<Loot> droppedItem;
 
         List<Loot> GetDroppedItem()
@@ -48,7 +49,6 @@ namespace UI.LootSystem
                     newLoot.GetComponent<SpriteRenderer>().sprite = droppedItem[i].lootSprite;
                 }
             }
-                
         }
     }
 }

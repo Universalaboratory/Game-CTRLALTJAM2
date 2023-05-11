@@ -21,6 +21,18 @@ namespace Entities.Player
                 case "Popcorn":
                     PopcornEffect(collision);
                     break;
+                case "Dash":
+                    DashEffect(other);
+                    break;
+                case "IncreaseLife":
+                    IncLifeEffect(other);
+                    break;
+                case "IncreaseSpeed":
+                    IncSpeedEffect(other);
+                    break;
+                case "IncreaseDamage":
+                    IncDamageEffect(other);
+                    break;
                 default:
                     break;
             }
@@ -47,6 +59,26 @@ namespace Entities.Player
                 _playerHealth.RestoredLife(heal);
                 Destroy(self.gameObject);
             }
+        }
+
+        private void DashEffect(Collider2D self)
+        {
+            Destroy(self.gameObject);
+        }
+
+        private void IncLifeEffect(Collider2D self)
+        {
+            Destroy(self.gameObject);
+        }
+
+        private void IncSpeedEffect(Collider2D self)
+        {
+            Destroy(self.gameObject);
+        }
+
+        private void IncDamageEffect(Collider2D self)
+        {
+            Destroy(self.gameObject);
         }
     }
 }
