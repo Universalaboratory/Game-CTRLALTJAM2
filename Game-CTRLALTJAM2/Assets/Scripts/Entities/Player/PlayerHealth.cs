@@ -10,10 +10,10 @@ namespace Entities.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
-        public static float _maxHelath;
-        public static GameObject healthBar;
-        public static Image filledHealthtBar;
-        public static float _currentHealth;
+        public float _maxHelath;
+        public GameObject healthBar;
+        public Image filledHealthtBar;
+        public float _currentHealth;
 
         [Header("Test")]
         [SerializeField] private bool _canDie = true;
@@ -46,7 +46,7 @@ namespace Entities.Player
             if (_currentHealth <= 0) Die();
         }
 
-        public static void RestoredLife(float heal)
+        public void RestoredLife(float heal)
         {
             if ((_currentHealth + heal) >= _maxHelath)
                 _currentHealth = _maxHelath;

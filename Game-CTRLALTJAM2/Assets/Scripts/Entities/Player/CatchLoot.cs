@@ -4,38 +4,47 @@ namespace Entities.Player
 {
     public class CatchLoot : MonoBehaviour
     {
-        private void OnTriggerEnter2D(Collider2D other)
+        private PlayerHealth _playerHealth;
+
+        private void Start()
         {
-            switch (other.gameObject.tag)
+             _playerHealth = GetComponent<PlayerHealth>();
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            switch (collision.gameObject.tag)
             {
                 case "Bread":
-                    BreadEffect(other);
+                    BreadEffect(collision);
                     break;
                 case "Popcorn":
-                    PopcornEffect(other);
+                    PopcornEffect(collision);
                     break;
                 default:
                     break;
             }
         }
 
+
         private void BreadEffect(Collider2D self)
         {
-            if (PlayerHealth._currentHealth < PlayerHealth._maxHelath)
+            if (_playerHealth._currentHealth < _playerHealth._maxHelath)
             {
-                float heal = PlayerHealth._maxHelath * 0.3f;
-                PlayerHealth.RestoredLife(heal);
+                float heal = _playerHealth._maxHelath * 0.3f;
+
+                _playerHealth.RestoredLife(heal);
                 Destroy(self.gameObject);
-            }
-            
+            }            
         }
 
         private void PopcornEffect(Collider2D self)
         {
-            if (PlayerHealth._currentHealth < PlayerHealth._maxHelath)
+            if (_playerHealth._currentHealth < _playerHealth._maxHelath)
             {
-                float heal = PlayerHealth._maxHelath * 0.1f;
-                PlayerHealth.RestoredLife(heal);
+                float heal = _playerHealth._maxHelath * 0.1f;
+
+                _playerHealth.RestoredLife(heal);
                 Destroy(self.gameObject);
             }
         }

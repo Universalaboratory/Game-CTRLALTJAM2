@@ -1926,6 +1926,7 @@ MonoBehaviour:
   _maxHelath: 10
   healthBar: {fileID: 1245603904}
   filledHealthtBar: {fileID: 74587134}
+  _currentHealth: 0
   _canDie: 0
 --- !u!61 &669836908
 BoxCollider2D:
