@@ -42,7 +42,6 @@ namespace Entities.Player
 
         private void OnTakeParticleFromPool(ParticlePool particles)
         {
-            _particleDamageSystem.Damage = _damage;
             particles.transform.position = _playerShootBehaviour._bulletSpawn.position;
             particles.transform.rotation = _playerShootBehaviour._bulletSpawn.rotation;
 

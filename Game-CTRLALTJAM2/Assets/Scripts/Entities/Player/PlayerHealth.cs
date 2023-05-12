@@ -11,7 +11,7 @@ namespace Entities.Player
 {
     public class PlayerHealth : MonoBehaviour
     {
-        [SerializeField] private float _maxHelath;
+        [SerializeField] private float _maxHealth;
         [SerializeField] private GameObject healthBar;
         [SerializeField] private Image filledHealthtBar;
         [SerializeField] private float _currentHealth;
@@ -26,13 +26,13 @@ namespace Entities.Player
 
 
         // Getters And Setters
-        public float MaxHealth { get => _maxHelath; }
+        public float MaxHealth { get => _maxHealth; }
         public float CurrentHealth { get => _currentHealth;}
         public bool CanDie { get => _canDie; set => _canDie = value; }
 
         private void Start()
         {
-            _currentHealth = _maxHelath;
+            _currentHealth = _maxHealth;
 
             collisionEvents = new List<ParticleCollisionEvent>();
             _impulseSource = GetComponent<CinemachineImpulseSource>();
@@ -50,7 +50,7 @@ namespace Entities.Player
         {
             _currentHealth -= damage;
 
-            float fillAmountPercentage = _currentHealth / _maxHelath;
+            float fillAmountPercentage = _currentHealth / _maxHealth;
 
             filledHealthtBar.fillAmount = Mathf.Lerp(filledHealthtBar.fillAmount, fillAmountPercentage, 1);
 
@@ -59,13 +59,13 @@ namespace Entities.Player
 
         public void RestoredLife(float heal)
         {
-            if ((_currentHealth + heal) >= _maxHelath)
-                _currentHealth = _maxHelath;
+            var totalHealing = _maxHealth * heal;
+            if ((_currentHealth + totalHealing) >= _maxHealth)
+                _currentHealth = _maxHealth;
             else
-                _currentHealth += heal;
+                _currentHealth += totalHealing;
 
-            float fillAmountPercentage = _currentHealth / _maxHelath;
-
+            float fillAmountPercentage = _currentHealth / _maxHealth;
             filledHealthtBar.fillAmount = Mathf.Lerp(filledHealthtBar.fillAmount, fillAmountPercentage, 1);
         }
 

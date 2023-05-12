@@ -142,9 +142,9 @@ namespace Entities.Enemy
         {
             if (_currentHealth <= 0) Die();
         }
+
         protected virtual void HealthBarFiller(float damage)
         {
-            Debug.LogWarning(damage);
             _currentHealth -= damage;
             float fillAmountPercentage = _currentHealth / maxHealth;
 

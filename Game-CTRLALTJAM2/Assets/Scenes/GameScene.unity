@@ -2121,11 +2121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d58ef2a0c47844d8dc2e427da364ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHelath: 10
+  _maxHealth: 10
   healthBar: {fileID: 1245603904}
   filledHealthtBar: {fileID: 74587134}
   _currentHealth: 0
-  _canDie: 0
+  _canDie: 1
 --- !u!114 &669836909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5010,7 +5010,7 @@ MonoBehaviour:
   - {fileID: 3184755884128218916, guid: d56a6855ba8cf424195a4882f19b7599, type: 3}
   - {fileID: 8684588699291711918, guid: 3f0fd60fc4112044295650d71a7299bf, type: 3}
   _prefabBoss: {fileID: 6517829056577116090, guid: 67b2f4024c8245b41905e80cd11cd2a5, type: 3}
-  _enemiesToSpawnPerWave: 10
+  _enemiesToSpawnPerWave: 0
   _liveEnemyList: []
 --- !u!114 &2026759728
 MonoBehaviour:

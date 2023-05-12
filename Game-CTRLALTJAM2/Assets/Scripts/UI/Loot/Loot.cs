@@ -6,8 +6,10 @@ namespace UI.LootSystem
     public class Loot : ScriptableObject
     {
         public Sprite Sprite;
+        public string tag;
         public string Name;
         public int dropChance;
+        public float valuePercentage;
 
         //public Loot(string lootName, int dropChance)
         //{

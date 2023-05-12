@@ -11,6 +11,8 @@ namespace UI.LootSystem
         [HideInInspector] public SpriteRenderer _lootSprite;
         [HideInInspector] public string _lootName;
         [HideInInspector] public int _dropChance;
+        [HideInInspector] public float _valuePercentage;
+
 
         private void Start()
         {
@@ -18,7 +20,9 @@ namespace UI.LootSystem
 
             _lootSprite.sprite = _loot.Sprite;
             _lootName = _loot.Name;
+            gameObject.tag = _loot.tag;
             _dropChance = _loot.dropChance;
+            _valuePercentage = _loot.valuePercentage;
         }
     }
 }

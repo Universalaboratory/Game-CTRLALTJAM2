@@ -8,20 +8,28 @@ namespace Entities.Player
 {
     public class CatchLoot : MonoBehaviour
     {
-        private Player _player;
         private PlayerPowerUpHandler _playerPowerUpHandler;
         private PlayerHealth _playerHealth;
 
         private void Start()
         {
-            _player = GetComponent<Player>();
-             _playerHealth = GetComponent<PlayerHealth>();
+            _playerHealth = GetComponent<PlayerHealth>();
             _playerPowerUpHandler = GetComponent<PlayerPowerUpHandler>();
         }
 
         private void OnTriggerStay2D(Collider2D other)
         {
+            WhatLootFound(other);
 
+            if (!_playerPowerUpHandler.HasOnePowerUpActive) // Só consegue pegar 1 power up de cada vez
+            {
+                WhatPowerUpFound(other);
+            }
+        }
+
+        //Switchs 
+        private void WhatLootFound(Collider2D other)
+        {
             switch (other.gameObject.tag)
             {
                 case Constants.BREAD:
@@ -30,6 +38,14 @@ namespace Entities.Player
                 case Constants.POPCORN:
                     PopcornEffect(other);
                     break;
+                default:
+                    break;
+            }
+        }
+        private void WhatPowerUpFound(Collider2D other)
+        {
+            switch (other.gameObject.tag)
+            {
                 case Constants.INCREASE_DASH:
                     DashEffect(other);
                     break;
@@ -48,28 +64,30 @@ namespace Entities.Player
         }
 
 
-        private void BreadEffect(Collider2D self)
+        // Loot Effects
+        private void BreadEffect(Collider2D self) // restores 70% of life
         {
-            if (_playerHealth.CurrentHealth < _playerHealth.MaxHealth)
-            {
-                float heal = _playerHealth.MaxHealth * 0.3f;
+            if (_playerHealth.CurrentHealth == _playerHealth.MaxHealth) return;
 
-                _playerHealth.RestoredLife(heal);
-                Destroy(self.gameObject);
-            }            
+            var values = self.gameObject.GetComponent<LootBehaviour>();
+            var heal = values._valuePercentage;
+
+            _playerHealth.RestoredLife(heal);
+            Destroy(self.gameObject);
         }
 
-        private void PopcornEffect(Collider2D self)
+        private void PopcornEffect(Collider2D self) // restores 40% of life
         {
-            if (_playerHealth.CurrentHealth < _playerHealth.MaxHealth)
-            {
-                float heal = _playerHealth.MaxHealth * 0.1f;
+            if (_playerHealth.CurrentHealth == _playerHealth.MaxHealth) return;
 
-                _playerHealth.RestoredLife(heal);
-                Destroy(self.gameObject);
-            }
+            var values = self.gameObject.GetComponent<LootBehaviour>();
+            var heal = values._valuePercentage;
+
+            _playerHealth.RestoredLife(heal);
+            Destroy(self.gameObject);
         }
 
+        // Power Ups Effects
         private void DashEffect(Collider2D self)
         {
             var values = self.gameObject.GetComponent<PowerUpBehaviour>();
@@ -114,7 +132,7 @@ namespace Entities.Player
             var values = self.gameObject.GetComponent<PowerUpBehaviour>();
 
             var coolDown = values._coolDownSeconds;
-            var newDamage= values._value;
+            var newDamage = values._value;
 
             StartCoroutine(_playerPowerUpHandler.SettingDamagePowerUp(coolDown, newDamage));
             GameplayEvents.PowerUp(coolDown);

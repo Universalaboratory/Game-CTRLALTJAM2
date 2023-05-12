@@ -12,15 +12,15 @@ namespace Entities.Player
         [SerializeField] public Transform _bulletSpawn;
         [SerializeField] private float _fireRate;
 
-        private float _damage = 1;
+        private ParticleSpawner _particleSpawner;
+        private InputControl _input;
 
         private float timer;
         private bool _isShooting;
 
-        private ParticleSpawner _particleSpawner;
-        private ParticleDamageSystem _particleDamageSystem;
-        private InputControl _input;
+        private float _damage = 1;
 
+        // Getters and Setters 
         public float Damage { get => _damage; set => _damage = value; }
 
         private void Awake()
@@ -31,7 +31,6 @@ namespace Entities.Player
         private void Start()
         {
             _particleSpawner = GetComponent<ParticleSpawner>();
-            _particleDamageSystem = _particlePool.GetComponent<ParticleDamageSystem>();
         }
 
         private void OnEnable()

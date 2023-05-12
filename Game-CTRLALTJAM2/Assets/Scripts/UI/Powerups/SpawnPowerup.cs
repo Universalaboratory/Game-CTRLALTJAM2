@@ -5,29 +5,39 @@ namespace UI.PowerupSystem
 {
     public class SpawnPowerup : MonoBehaviour
     {
-        private PowerupList _powerUpList; 
+        private PowerupList _powerUpList;
+
+        [SerializeField] private bool _spawnAllPowerUp;
+        [SerializeField] private float _timeBetweenSpawnSeconds = 3f;
 
         private float i = 0;
 
-        void Start ()
+        void Start()
         {
             _powerUpList = GetComponent<PowerupList>();
         }
 
         void Update()
         {
+            Spawn();
+        }
 
-            if (i < 3f)
+        private void Spawn()
+        {
+            if (i < _timeBetweenSpawnSeconds)
                 i += Time.deltaTime;
             else
             {
-                //GetComponent<PowerupList>().SpawnPowerup(gameObject.transform.position);
+                if (_spawnAllPowerUp)
+                {
+                    _powerUpList.SpawnAllPowerUps(gameObject.transform.position);
+                    i = 0;
+                    return;
+                }
 
-                //Fazer o Spawn numa area determinada
-                _powerUpList.SpawnAllPowerUps(gameObject.transform.position);
+                _powerUpList.SpawnOnePowerUpEachtime(gameObject.transform.position);
                 i = 0;
             }
-            
         }
     }
 }

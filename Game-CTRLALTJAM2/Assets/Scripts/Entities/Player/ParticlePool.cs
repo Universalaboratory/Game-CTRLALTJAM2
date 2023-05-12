@@ -8,19 +8,13 @@ public class ParticlePool : MonoBehaviour
     private ObjectPool<ParticlePool> _pool;
     private ParticleSystem _particleSystem;
 
-
-
     private void Start()
     {
         _particleSystem = GetComponent<ParticleSystem>();
 
         var main = _particleSystem.main;
         main.stopAction = ParticleSystemStopAction.Callback;
-
-        Debug.LogWarning("PARTICLE POOL START");
     }
-
-
 
     private void OnParticleSystemStopped()
     {

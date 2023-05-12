@@ -6,11 +6,15 @@ namespace Entities.Player
 {
     public class PlayerPowerUpHandler : MonoBehaviour
     {
+
         private Player _player;
         private PlayerHealth _playerHealth;
         private PlayerShootBehaviour _playerShootBehaviour;
 
         private float _timer;
+        private bool _hasOnePowerUpActive;
+
+        public bool HasOnePowerUpActive { get => _hasOnePowerUpActive; set => _hasOnePowerUpActive = value; }
 
         private void Start()
         {
@@ -19,10 +23,11 @@ namespace Entities.Player
             _playerShootBehaviour = GetComponentInChildren<PlayerShootBehaviour>();
         }
 
-        // Da forma como está funcionando, se pega 2 Power Ups, não termina o 1.
         public IEnumerator SettingDashPowerUp(float CoolDown, float newVelocity)
         {
+            _hasOnePowerUpActive = true;
             _timer = 0;
+
             var normalDashSpeed = _player.DashSpeed;
             _player.DashSpeed *= newVelocity;
 
@@ -31,12 +36,16 @@ namespace Entities.Player
                 _timer += Time.deltaTime;
                 yield return null;
             }
+
             _player.DashSpeed = normalDashSpeed;
+            _hasOnePowerUpActive = false;
         }
 
         public IEnumerator SettingSpeedPowerUp(float CoolDown, float newVelocity)
         {
+            _hasOnePowerUpActive = true;
             _timer = 0;
+
             var normalSpeed = _player.PlayerSpeed;
             _player.PlayerSpeed *= newVelocity;
 
@@ -45,12 +54,16 @@ namespace Entities.Player
                 _timer += Time.deltaTime;
                 yield return null;
             }
+
             _player.PlayerSpeed = normalSpeed;
+            _hasOnePowerUpActive = false;
         }
 
         public IEnumerator SettingLifePowerUp(float CoolDown, bool isOn)
         {
+            _hasOnePowerUpActive = true;
             _timer = 0;
+
             _playerHealth.CanDie = isOn;
 
             while (CoolDown >= _timer)
@@ -60,14 +73,16 @@ namespace Entities.Player
             }
 
             _playerHealth.CanDie = !_playerHealth.CanDie;
+            _hasOnePowerUpActive = false;
         }
 
         public IEnumerator SettingDamagePowerUp(float CoolDown, float newDamage)
         {
+            _hasOnePowerUpActive = true;
+            _timer = 0;
+
             var normalDamage = _playerShootBehaviour.Damage;
             _playerShootBehaviour.Damage = newDamage;
-
-            _timer = 0;
 
             while (CoolDown >= _timer)
             {
@@ -76,6 +91,7 @@ namespace Entities.Player
             }
 
             _playerShootBehaviour.Damage = normalDamage;
+            _hasOnePowerUpActive = false;
         }
     }
 }
