@@ -15,7 +15,7 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
   type: 0
   tag: IncreaseDamage
-  dropChance: 10
+  dropChance: 100
   value: 3
   coolDownSeconds: 10
   isOn: 0

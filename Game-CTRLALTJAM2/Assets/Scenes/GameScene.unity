@@ -2125,7 +2125,7 @@ MonoBehaviour:
   healthBar: {fileID: 1245603904}
   filledHealthtBar: {fileID: 74587134}
   _currentHealth: 0
-  _canDie: 1
+  _canDie: 0
 --- !u!114 &669836909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 36
   m_fontSizeBase: 84
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4662,7 +4662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c7fea64e20891449dd6202de39a3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particlePrefab: {fileID: 6803213378405401038, guid: 343df50bf7d2fca418c34a853e6cc66e, type: 3}
+  _particlePool: {fileID: 6803213378405401038, guid: 343df50bf7d2fca418c34a853e6cc66e, type: 3}
   _bulletSpawn: {fileID: 66306309}
   _fireRate: 2
 --- !u!114 &1749380252
@@ -5010,7 +5010,7 @@ MonoBehaviour:
   - {fileID: 3184755884128218916, guid: d56a6855ba8cf424195a4882f19b7599, type: 3}
   - {fileID: 8684588699291711918, guid: 3f0fd60fc4112044295650d71a7299bf, type: 3}
   _prefabBoss: {fileID: 6517829056577116090, guid: 67b2f4024c8245b41905e80cd11cd2a5, type: 3}
-  _enemiesToSpawnPerWave: 0
+  _enemiesToSpawnPerWave: 10
   _liveEnemyList: []
 --- !u!114 &2026759728
 MonoBehaviour:

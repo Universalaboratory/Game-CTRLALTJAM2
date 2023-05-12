@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UI.GameManagement;
+using Entities.Player;
 
 namespace Entities.Enemy
 {
@@ -14,7 +15,9 @@ namespace Entities.Enemy
         [SerializeField] protected float maxHealth;
         [SerializeField] protected GameObject healthBar;
         [SerializeField] protected Image filledHealthtBar;
-        protected float _currentHealth;
+        [SerializeField] protected float _currentHealth;
+        [Header("TEST")]
+        [SerializeField] private bool _canDie = true;
 
         [Space]
         [Header("Movement Parameters")]
@@ -57,7 +60,7 @@ namespace Entities.Enemy
         {
             if (GameManager.Instance._state != GameState.GAMEPLAY) return;
 
-            LostHealth();
+            
             EnemyLook(_target.position);
             FlipBody();
             VerifyRange();
@@ -126,16 +129,28 @@ namespace Entities.Enemy
         }
 
         // Health
+        private void OnParticleCollision(GameObject other)
+        {
+            if (!_canDie) return;
+
+            var damage = other.GetComponent<ParticleDamageSystem>().Damage;
+            healthBar.gameObject.SetActive(true);
+            HealthBarFiller(damage);
+        }
+
         protected virtual void LostHealth()
         {
             if (_currentHealth <= 0) Die();
         }
         protected virtual void HealthBarFiller(float damage)
         {
+            Debug.LogWarning(damage);
             _currentHealth -= damage;
             float fillAmountPercentage = _currentHealth / maxHealth;
 
             filledHealthtBar.fillAmount = Mathf.Lerp(filledHealthtBar.fillAmount, fillAmountPercentage, 1);
+
+            LostHealth();
         }
 
         protected abstract void Die();

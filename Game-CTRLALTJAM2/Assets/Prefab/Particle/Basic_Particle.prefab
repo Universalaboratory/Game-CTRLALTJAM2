@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1368496495704287645}
   - component: {fileID: 6803213378405401038}
   - component: {fileID: -7217145089960296156}
+  - component: {fileID: 730944326378177452}
   m_Layer: 0
   m_Name: Basic_Particle
   m_TagString: Player
@@ -4898,3 +4899,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitMarketParticlePool: {fileID: -4308869521958014487, guid: 92f068277abfa5d4f9ee3d240b606b36, type: 3}
   _hitPoint: {fileID: 1368496495704287643, guid: 92f068277abfa5d4f9ee3d240b606b36, type: 3}
+--- !u!114 &730944326378177452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368496495704287644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fd5ed8eb025ea4da61146b0220d1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

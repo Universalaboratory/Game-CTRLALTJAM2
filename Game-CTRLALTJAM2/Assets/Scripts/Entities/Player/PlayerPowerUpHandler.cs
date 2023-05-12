@@ -8,6 +8,7 @@ namespace Entities.Player
     {
         private Player _player;
         private PlayerHealth _playerHealth;
+        private PlayerShootBehaviour _playerShootBehaviour;
 
         private float _timer;
 
@@ -15,8 +16,10 @@ namespace Entities.Player
         {
             _player = GetComponent<Player>();
             _playerHealth = GetComponent<PlayerHealth>();
+            _playerShootBehaviour = GetComponentInChildren<PlayerShootBehaviour>();
         }
 
+        // Da forma como está funcionando, se pega 2 Power Ups, não termina o 1.
         public IEnumerator SettingDashPowerUp(float CoolDown, float newVelocity)
         {
             _timer = 0;
@@ -61,8 +64,8 @@ namespace Entities.Player
 
         public IEnumerator SettingDamagePowerUp(float CoolDown, float newDamage)
         {
-            // Ainda não tem um sistema de Dano
-            Debug.LogWarning("Ainda não tem sistema de dano");
+            var normalDamage = _playerShootBehaviour.Damage;
+            _playerShootBehaviour.Damage = newDamage;
 
             _timer = 0;
 
@@ -71,7 +74,8 @@ namespace Entities.Player
                 _timer += Time.deltaTime;
                 yield return null;
             }
-            
+
+            _playerShootBehaviour.Damage = normalDamage;
         }
     }
 }

@@ -49,9 +49,6 @@ namespace UI.GameManagement
         private Vector2 GetPosition()
         {
             var newPos = new Vector2(Random.Range(-_spawnAreaSize.x / 2, _spawnAreaSize.x / 2), Random.Range(-_spawnAreaSize.y / 2, _spawnAreaSize.y / 2));
-
-            print(newPos.x + "/" + newPos.y);
-
             return newPos;
         }
 

@@ -9,7 +9,13 @@ namespace Entities.Player
     {
         public ObjectPool<ParticlePool> _pool;
 
+        private List<ParticleDamageSystem> _particleDamageList = new List<ParticleDamageSystem>();
+
         private PlayerShootBehaviour _playerShootBehaviour;
+        private ParticleDamageSystem _particleDamageSystem;
+
+        private float _damage;
+        public float Damage { get => _damage; set => _damage = value; }
 
         private void Start()
         {
@@ -17,16 +23,26 @@ namespace Entities.Player
             _pool = new ObjectPool<ParticlePool>(CreateParticles, OnTakeParticleFromPool, OnReturnParticleToPool, OnDestroyParticles, true, 200, 350);
         }
 
+        private void Update()
+        {
+            SetUpDamage();
+        }
+
         private ParticlePool CreateParticles()
         {
-            ParticlePool particles = Instantiate(_playerShootBehaviour._particlePrefab, _playerShootBehaviour._bulletSpawn.position, _playerShootBehaviour._bulletSpawn.rotation);
+            ParticlePool particles = Instantiate(_playerShootBehaviour._particlePool, _playerShootBehaviour._bulletSpawn.position, _playerShootBehaviour._bulletSpawn.rotation);
             particles.transform.SetParent(_playerShootBehaviour._bulletSpawn);
+            _particleDamageSystem = particles.GetComponent<ParticleDamageSystem>();
+            _particleDamageList.Add(_particleDamageSystem);
+            
             particles.SetPool(_pool);
+
             return particles;
         }
 
         private void OnTakeParticleFromPool(ParticlePool particles)
         {
+            _particleDamageSystem.Damage = _damage;
             particles.transform.position = _playerShootBehaviour._bulletSpawn.position;
             particles.transform.rotation = _playerShootBehaviour._bulletSpawn.rotation;
 
@@ -36,7 +52,6 @@ namespace Entities.Player
         private void OnReturnParticleToPool(ParticlePool particles)
         {
             particles.gameObject.SetActive(false);
-
         }
 
         private void OnDestroyParticles(ParticlePool particles)
@@ -44,6 +59,13 @@ namespace Entities.Player
             Destroy(particles.gameObject);
         }
 
+        private void SetUpDamage()
+        {
+            foreach (var particle in _particleDamageList)
+            {
+                particle.Damage = _damage;
+            }
+        }
     }
 
 }

@@ -7,11 +7,10 @@ namespace UI.PowerupSystem
     {
         public List<GameObject> powerupList = new List<GameObject>();
         
-        List<GameObject> droppedItem;
+
 
         public void SpawnAllPowerUps(Vector2 pos)
         {
-            Debug.LogWarning("SPAWN ALL PU");
 
             foreach (var powerUp in powerupList)
             {
