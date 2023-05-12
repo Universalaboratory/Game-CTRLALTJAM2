@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 namespace UI.GameManagement
 {
@@ -66,7 +67,7 @@ namespace UI.GameManagement
                 logo.color = _introColorLogo;
             }
             else
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(Constants.MENU_START_SCENE);
         }
     }
 }

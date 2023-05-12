@@ -25,7 +25,7 @@ namespace UI.PowerupSystem
 
         public void SpawnOnePowerUpEachtime(Vector2 pos)
         {
-            var rnd = Random.Range(0, powerupList.Count - 1);
+            var rnd = Random.Range(0, powerupList.Count);
 
             GameObject newPowerUp = Instantiate(powerupList[rnd], GetRandomPosition(pos), Quaternion.identity);
         }

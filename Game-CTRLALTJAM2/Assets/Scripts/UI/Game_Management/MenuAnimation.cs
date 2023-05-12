@@ -8,7 +8,9 @@ public class MenuAnimation : MonoBehaviour
     public GameObject txt;
     public GameObject menuPanel;
 
-    private bool _keyPressed, _transitionOver;
+    private Vector2 initPos;
+
+    [SerializeField] private bool _keyPressed, _transitionOver;
 
     void Start()
     {
@@ -22,7 +24,7 @@ public class MenuAnimation : MonoBehaviour
         if (Keyboard.current.anyKey.wasPressedThisFrame)
         {
             txt.SetActive(false);
-            _keyPressed=true;
+            _keyPressed = true;
         }
 
         if (_keyPressed)
@@ -33,14 +35,20 @@ public class MenuAnimation : MonoBehaviour
     {
         if (!_transitionOver)
         {
+            Debug.LogWarning("Transition Entrou");
+
             if (bg.uvRect.position.x < 0.499f)
-                bg.uvRect = new Rect(bg.uvRect.position +  new Vector2(0.0001f, 0) * Time.deltaTime * 1000, bg.uvRect.size);
+            {
+                Debug.LogWarning(" BG Andando");
+                bg.uvRect = new Rect(bg.uvRect.position + new Vector2(0.0001f, 0) * Time.deltaTime * 1000, bg.uvRect.size);
+
+            }
             else
             {
+                Debug.LogWarning(" BG Chegou");
                 menuPanel.SetActive(true);
                 _transitionOver = true;
             }
         }
-        
     }
 }

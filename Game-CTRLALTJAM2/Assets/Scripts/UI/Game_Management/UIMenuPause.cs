@@ -75,7 +75,10 @@ namespace UI.GameManagement
 
         public void ClickExitButton()
         {
-            SceneManager.LoadScene(Constants.MENU_START_SCENE);
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+            Application.Quit();
         }
 
         private void GameOverPanel()
@@ -88,7 +91,6 @@ namespace UI.GameManagement
         {
             CloseAllPanel();
             _winPanel.SetActive(true);
-
         }
 
         private void SetUpWaveText(WaveState currentWave)
@@ -98,9 +100,8 @@ namespace UI.GameManagement
             _waveText.gameObject.SetActive(true);
             _waveText.text = "WAVE " + waveNumber;
             StartCoroutine(FadeWaveText());
-            
         }
-        
+
         private void SetUpBossText()
         {
             _waveText.gameObject.SetActive(true);
