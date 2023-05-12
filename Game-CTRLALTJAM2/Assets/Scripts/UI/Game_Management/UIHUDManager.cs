@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace UI.GameManagement
 {
@@ -11,6 +12,8 @@ namespace UI.GameManagement
         [Header("PowerUp")]
         [SerializeField] private GameObject _powerUpBarHolder;
         [SerializeField] private Image _powerUpFillBar;
+        [SerializeField] private Sprite[] _powerUpSpriteList;
+        [SerializeField] private Image _activePowerUpImage;
 
         [Space]
         [Header("Dash")]
@@ -48,8 +51,9 @@ namespace UI.GameManagement
             }
         }
 
-        private void SettingPowerUpBar(float coolDownTimerSeconds)
+        private void SettingPowerUpBar(float coolDownTimerSeconds, int imageIndex)
         {
+            _activePowerUpImage.sprite = _powerUpSpriteList[imageIndex];
             _powerUpBarHolder.SetActive(true);
 
             _powerUpFillBar.fillAmount = 1;

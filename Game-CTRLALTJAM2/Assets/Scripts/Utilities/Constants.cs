@@ -19,6 +19,12 @@ namespace Utilities
         public const string INCREASE_LIFE = "IncreaseLife";
         public const string INCREASE_SPEED = "IncreaseSpeed";
         public const string INCREASE_DAMAGE = "IncreaseDamage";
+
+        //Sprites
+        public static int PU_DAMAGE_ICON = 0;
+        public static int PU_DASH_ICON = 1;
+        public static int PU_LIFE_ICON = 2;
+        public static int PU_SPEED_ICON = 3;
     }
 }
 

@@ -43,7 +43,7 @@ namespace Entities.Player
 
         private void FlipBody()
         {
-            var flipDir = (_direction.x > _playerParent.position.x) ? (_bodySP.flipX = true) : (_bodySP.flipX = false);
+            var flipDir = (_direction.x < _playerParent.position.x) ? (_bodySP.flipX = true) : (_bodySP.flipX = false);
         }
     }
 }

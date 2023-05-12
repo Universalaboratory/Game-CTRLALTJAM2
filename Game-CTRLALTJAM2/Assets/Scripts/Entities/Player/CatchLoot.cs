@@ -96,7 +96,7 @@ namespace Entities.Player
             var newSpeed = values._value;
 
             StartCoroutine(_playerPowerUpHandler.SettingDashPowerUp(coolDown, newSpeed));
-            GameplayEvents.PowerUp(coolDown);
+            GameplayEvents.PowerUp(coolDown, Constants.PU_DASH_ICON);
 
             Destroy(self.gameObject);
         }
@@ -109,7 +109,7 @@ namespace Entities.Player
             var isOn = values._isOn;
 
             StartCoroutine(_playerPowerUpHandler.SettingLifePowerUp(coolDown, isOn));
-            GameplayEvents.PowerUp(coolDown);
+            GameplayEvents.PowerUp(coolDown, Constants.PU_LIFE_ICON);
 
             Destroy(self.gameObject);
         }
@@ -122,7 +122,7 @@ namespace Entities.Player
             var newSpeed = values._value;
 
             StartCoroutine(_playerPowerUpHandler.SettingSpeedPowerUp(coolDown, newSpeed));
-            GameplayEvents.PowerUp(coolDown);
+            GameplayEvents.PowerUp(coolDown, Constants.PU_SPEED_ICON);
 
             Destroy(self.gameObject);
         }
@@ -135,7 +135,7 @@ namespace Entities.Player
             var newDamage = values._value;
 
             StartCoroutine(_playerPowerUpHandler.SettingDamagePowerUp(coolDown, newDamage));
-            GameplayEvents.PowerUp(coolDown);
+            GameplayEvents.PowerUp(coolDown, Constants.PU_DAMAGE_ICON);
 
             Destroy(self.gameObject);
         }
