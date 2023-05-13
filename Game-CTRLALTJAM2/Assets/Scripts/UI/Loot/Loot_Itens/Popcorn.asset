@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d19a76e5c2492504c97b3ab40f5c4a08, type: 3}
   m_Name: Popcorn
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 7395bf0bc3cc40e4ab2dda5ec6832261, type: 3}
+  Sprite: {fileID: 21300000, guid: b6e21c2de6e7d6b4e92a2591ab5f51b4, type: 3}
   tag: Popcorn
   Name: Popcorn
   dropChance: 80
