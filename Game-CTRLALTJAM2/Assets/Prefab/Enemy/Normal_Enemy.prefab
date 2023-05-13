@@ -442,8 +442,7 @@ MonoBehaviour:
   _minDistToAttack: 3
   _particleSpawner: {fileID: 2541943060607776386}
   _particlePrefab: {fileID: -9188150409727321494, guid: bc7f6f7289ddf9540aa1811550e3e660, type: 3}
-  _bulletSpawn:
-  - {fileID: 2114683978762206999}
+  _bulletSpawn: {fileID: 2114683978762206999}
   _fireRate: 2
   _enemyBody: {fileID: 2541943059436233012}
   _weaponHolder: {fileID: 2541943060607776387}
