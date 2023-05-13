@@ -6,7 +6,10 @@ namespace UI.LootSystem
 {
     public class LootBehaviour : MonoBehaviour
     {
-        [SerializeField] Loot _loot;
+        [SerializeField] public Loot _loot;
+
+        [Space]
+        [SerializeField] private float _maxTimeAliveSeconds;
 
         [HideInInspector] public SpriteRenderer _lootSprite;
         [HideInInspector] public string _lootName;
@@ -23,6 +26,8 @@ namespace UI.LootSystem
             gameObject.tag = _loot.tag;
             _dropChance = _loot.dropChance;
             _valuePercentage = _loot.valuePercentage;
+
+            Destroy(gameObject, _maxTimeAliveSeconds);
         }
     }
 }
