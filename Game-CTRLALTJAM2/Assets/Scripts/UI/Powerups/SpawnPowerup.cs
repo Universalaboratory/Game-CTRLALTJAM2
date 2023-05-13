@@ -6,15 +6,18 @@ namespace UI.PowerupSystem
     public class SpawnPowerup : MonoBehaviour
     {
         private PowerupList _powerUpList;
+        private Vector2 _colliderArea;
 
         [SerializeField] private bool _spawnAllPowerUp;
         [SerializeField] private float _timeBetweenSpawnSeconds = 3f;
+        [SerializeField] private float _spawnAreaOffset = 3f;
 
         private float i = 0;
 
         void Start()
         {
             _powerUpList = GetComponent<PowerupList>();
+            _colliderArea = GetComponent<BoxCollider2D>().size;
         }
 
         void Update()
@@ -30,14 +33,19 @@ namespace UI.PowerupSystem
             {
                 if (_spawnAllPowerUp)
                 {
-                    _powerUpList.SpawnAllPowerUps(gameObject.transform.position);
+                    _powerUpList.SpawnAllPowerUps(RandomArea(), _spawnAreaOffset);
                     i = 0;
                     return;
                 }
 
-                _powerUpList.SpawnOnePowerUpEachtime(gameObject.transform.position);
+                _powerUpList.SpawnOnePowerUpEachtime(RandomArea(), _spawnAreaOffset);
                 i = 0;
             }
+        }
+
+        private Vector2 RandomArea()
+        {
+           return (Vector2)transform.position + Random.insideUnitCircle * _colliderArea;
         }
     }
 }

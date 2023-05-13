@@ -20,16 +20,16 @@ namespace UI.GameManagement
 
         private WaveManager _waveManager;
 
-        private BoxCollider2D _spawnArea;
+        private Vector2 _colliderArea;
         private Vector2 _spawnAreaSize;
 
         private void Awake()
         {
             _waveManager = GetComponent<WaveManager>();
 
-            _spawnArea = GetComponent<BoxCollider2D>();
-            _spawnAreaSize.x = _spawnArea.size.x;
-            _spawnAreaSize.y = _spawnArea.size.y;
+            _colliderArea = GetComponent<BoxCollider2D>().size;
+            _spawnAreaSize.x = _colliderArea.x;
+            _spawnAreaSize.y = _colliderArea.y;
         }
 
         private void OnEnable()
@@ -49,8 +49,9 @@ namespace UI.GameManagement
 
         private Vector2 GetPosition()
         {
-            var newPos = new Vector2(Random.Range(-_spawnAreaSize.x / 2, _spawnAreaSize.x / 2), Random.Range(-_spawnAreaSize.y / 2, _spawnAreaSize.y / 2));
-            return newPos;
+
+            return (Vector2)transform.position + Random.insideUnitCircle * _colliderArea;
+
         }
 
         private void SpawnEnemy(WaveState currentWave)
@@ -70,10 +71,10 @@ namespace UI.GameManagement
         {
             // Posição randomica
             //GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);            
-            
+
             GameObject.FindFirstObjectByType<AudioManager>().CleanUp();
             GameObject.FindFirstObjectByType<AudioManager>().InitializeMusic(FMODEvents.instance.bossMusic);
-            
+
             // Centro da Tela
             GameObject enemy = Instantiate(_prefabBoss, Vector3.zero, Quaternion.identity);
         }
