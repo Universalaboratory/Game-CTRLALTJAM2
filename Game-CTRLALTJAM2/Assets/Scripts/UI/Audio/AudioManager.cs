@@ -12,6 +12,8 @@ namespace UI.Audio
 
         private EventInstance musicEventInstance;
 
+        private bool isPlaying;
+
         public float MusicVolume = 1;
 
         public static AudioManager instance { get; private set; }
@@ -30,19 +32,24 @@ namespace UI.Audio
 
         private void Start()
         {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("IntroScene"))
+            DontDestroyOnLoad(gameObject);
+            isPlaying = false;
+        }
+
+        private void Update()
+        {
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("IntroScene") || 
+                SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene"))
             {
-                Debug.LogWarning("Introduction Scene Recognized!");
-            }
-            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene"))
-            {
-                Debug.LogWarning("Menu Scene Recognized!");
-                InitializeMusic(FMODEvents.instance.menuMusic);
+                if (!isPlaying)
+                    InitializeMusic(FMODEvents.instance.menuMusic);
             }
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
             {
-                Debug.LogWarning("Game Scene Recognized!");
-                InitializeMusic(FMODEvents.instance.gameplayMusic);
+                CleanUp();
+
+                if (!isPlaying)
+                    InitializeMusic(FMODEvents.instance.gameplayMusic);
             }
         }
 
@@ -62,6 +69,7 @@ namespace UI.Audio
         {
             musicEventInstance = CreateInstance(musicEventReference);
             musicEventInstance.start();
+            isPlaying = true;
         }
 
         public void CleanUp()
@@ -70,6 +78,7 @@ namespace UI.Audio
             {
                 eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 eventInstance.release();
+                isPlaying= false;
             }
         }
 

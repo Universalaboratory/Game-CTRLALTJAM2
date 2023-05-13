@@ -441,6 +441,76 @@ MonoBehaviour:
       Data3: -924340597
       Data4: 2131600492
     Path: event:/Music/mus_boss
+  <playerGunshot>k__BackingField:
+    Guid:
+      Data1: -720373460
+      Data2: 1297548761
+      Data3: -824618058
+      Data4: 521486898
+    Path: event:/Sfx/Gameplay/sfx_tiro_titica
+  <playerGunshotUpgraded>k__BackingField:
+    Guid:
+      Data1: 2076498501
+      Data2: 1200696095
+      Data3: 452403384
+      Data4: -342034302
+    Path: event:/Sfx/Gameplay/sfx_tiro_titica forte
+  <enemyGunshot>k__BackingField:
+    Guid:
+      Data1: -323125821
+      Data2: 1295829893
+      Data3: 152244405
+      Data4: 1140075626
+    Path: event:/Sfx/Gameplay/sfx_tiro1_pp
+  <bossGunshot>k__BackingField:
+    Guid:
+      Data1: -451965031
+      Data2: 1121097267
+      Data3: 951079090
+      Data4: 2059917481
+    Path: event:/Sfx/Gameplay/sfx_tiro_boss
+  <enemyGotDamaged>k__BackingField:
+    Guid:
+      Data1: 515753861
+      Data2: 1336940829
+      Data3: -1855709780
+      Data4: -1307329149
+    Path: event:/Sfx/Gameplay/sfx_attack_pruu
+  <powerups>k__BackingField:
+    Guid:
+      Data1: -1336349912
+      Data2: 1220551157
+      Data3: -1885904735
+      Data4: -1517764869
+    Path: event:/Sfx/Gameplay/sfx_power up
+  <victoryEnd>k__BackingField:
+    Guid:
+      Data1: 1543778010
+      Data2: 1147850428
+      Data3: -1360182129
+      Data4: -1447507160
+    Path: event:/Music/mus_vinheta_vitoria
+  <defeatEnd>k__BackingField:
+    Guid:
+      Data1: 65484904
+      Data2: 1250565134
+      Data3: 633529238
+      Data4: -125458875
+    Path: event:/Music/mus_vinheta_derrota
+  <menuPlay>k__BackingField:
+    Guid:
+      Data1: -1620310236
+      Data2: 1191797045
+      Data3: -794810225
+      Data4: -1456241094
+    Path: event:/Sfx/Menu/sfx_menu_confirma_play
+  <menuConfirm>k__BackingField:
+    Guid:
+      Data1: -216531414
+      Data2: 1198468552
+      Data3: -1107916118
+      Data4: -1997455472
+    Path: event:/Sfx/Menu/sfx_menu_confirma
 --- !u!114 &617940618
 MonoBehaviour:
   m_ObjectHideFlags: 0
