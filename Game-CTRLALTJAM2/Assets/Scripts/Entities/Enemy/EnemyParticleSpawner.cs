@@ -11,6 +11,7 @@ namespace Entities.Enemy
         public ObjectPool<EnemyParticlePool> _pool;
 
         private AEnemy _myEnemy;
+        private EnemyParticlePool particles = null;
 
         private void Start()
         {
@@ -20,18 +21,22 @@ namespace Entities.Enemy
 
         private EnemyParticlePool CreateParticles()
         {
-            EnemyParticlePool particles = Instantiate(_myEnemy._particlePrefab, _myEnemy._bulletSpawn.position, _myEnemy._bulletSpawn.rotation);
-            particles.transform.SetParent(_myEnemy._bulletSpawn);
-            particles.SetPool(_pool);
+ 
+                particles = Instantiate(_myEnemy._particlePrefab, _myEnemy._bulletSpawn.position, _myEnemy._bulletSpawn.rotation);
+                particles.transform.SetParent(_myEnemy._bulletSpawn);
+                particles.SetPool(_pool);
+            
             return particles;
         }
 
         private void OnTakeParticleFromPool(EnemyParticlePool particles)
         {
-            particles.transform.position = _myEnemy._bulletSpawn.position;
-            particles.transform.rotation = _myEnemy._bulletSpawn.rotation;
 
-            particles.gameObject.SetActive(true);
+                particles.transform.position = _myEnemy._bulletSpawn.position;
+                particles.transform.rotation = _myEnemy._bulletSpawn.rotation;
+
+                particles.gameObject.SetActive(true);
+            
         }
 
         private void OnReturnParticleToPool(EnemyParticlePool particles)

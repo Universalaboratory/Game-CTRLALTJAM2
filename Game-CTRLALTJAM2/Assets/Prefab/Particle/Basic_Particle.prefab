@@ -3843,7 +3843,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 3
     collidesWith:
       serializedVersion: 2
       m_Bits: 64
@@ -4911,3 +4911,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fd5ed8eb025ea4da61146b0220d1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 0

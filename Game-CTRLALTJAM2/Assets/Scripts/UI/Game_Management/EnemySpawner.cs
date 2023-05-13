@@ -69,14 +69,12 @@ namespace UI.GameManagement
 
         private void SpawnBoss()
         {
-            // Posição randomica
-            //GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);            
-
-            GameObject.FindFirstObjectByType<AudioManager>().CleanUp();
-            GameObject.FindFirstObjectByType<AudioManager>().InitializeMusic(FMODEvents.instance.bossMusic);
+            //Não ta funcionando pra mim, entao foi comentar 
+            //GameObject.FindFirstObjectByType<AudioManager>().CleanUp();
+            //GameObject.FindFirstObjectByType<AudioManager>().InitializeMusic(FMODEvents.instance.bossMusic);
 
             // Centro da Tela
-            GameObject enemy = Instantiate(_prefabBoss, Vector3.zero, Quaternion.identity);
+            GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);
         }
 
         private void AddEnemyToList(GameObject enemy)

@@ -6,6 +6,8 @@ namespace Entities.Enemy
 {
     public class BossEnemy : AEnemy
     {
+
+
         protected override void Die()
         {
             GameObject.FindObjectOfType<AudioManager>().CleanUp();
