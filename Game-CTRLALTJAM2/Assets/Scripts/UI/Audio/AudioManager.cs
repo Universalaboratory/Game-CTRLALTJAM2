@@ -12,8 +12,6 @@ namespace UI.Audio
 
         private EventInstance musicEventInstance;
 
-        private bool isPlaying;
-
         public float MusicVolume = 1;
 
         public static AudioManager instance { get; private set; }
@@ -32,24 +30,17 @@ namespace UI.Audio
 
         private void Start()
         {
-            DontDestroyOnLoad(gameObject);
-            isPlaying = false;
-        }
-
-        private void Update()
-        {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("IntroScene") || 
-                SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene"))
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("IntroScene"))
             {
-                if (!isPlaying)
-                    InitializeMusic(FMODEvents.instance.menuMusic);
+                InitializeMusic(FMODEvents.instance.introMusic);
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene"))
+            {
+                InitializeMusic(FMODEvents.instance.menuMusic);
             }
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
             {
-                CleanUp();
-
-                if (!isPlaying)
-                    InitializeMusic(FMODEvents.instance.gameplayMusic);
+                InitializeMusic(FMODEvents.instance.gameplayMusic);
             }
         }
 
@@ -69,7 +60,6 @@ namespace UI.Audio
         {
             musicEventInstance = CreateInstance(musicEventReference);
             musicEventInstance.start();
-            isPlaying = true;
         }
 
         public void CleanUp()
@@ -78,7 +68,6 @@ namespace UI.Audio
             {
                 eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 eventInstance.release();
-                isPlaying= false;
             }
         }
 

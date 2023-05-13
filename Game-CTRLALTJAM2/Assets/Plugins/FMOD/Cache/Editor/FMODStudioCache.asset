@@ -161,7 +161,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 52200
+  Length: 43200
 --- !u!114 &-4503633763890459597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   - {fileID: 429947482049748986}
   StringsBanks:
   - {fileID: -2020125613419087328}
-  cacheTime: 638196045180000000
+  cacheTime: 638196072020000000
   cacheVersion: 131603
 --- !u!114 &429947482049748986
 MonoBehaviour:
@@ -374,10 +374,10 @@ MonoBehaviour:
   Path: Assets/Sound_Design/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638196045180000000
+  lastModified: 638196072020000000
   FileSizes:
   - Name: Desktop
-    Value: 6535552
+    Value: 6535168
   Exists: 1
 --- !u!114 &2079471816216981204
 MonoBehaviour:

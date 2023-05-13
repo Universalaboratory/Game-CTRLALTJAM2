@@ -420,6 +420,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e1be23ea2742d45ba0073f820470d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <introMusic>k__BackingField:
+    Guid:
+      Data1: -1868812347
+      Data2: 1136033574
+      Data3: 1379618739
+      Data4: -1037238797
+    Path: event:/Music/music_vinheta
   <menuMusic>k__BackingField:
     Guid:
       Data1: -1353078168

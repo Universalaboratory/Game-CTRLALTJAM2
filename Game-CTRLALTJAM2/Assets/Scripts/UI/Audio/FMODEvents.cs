@@ -9,6 +9,7 @@ namespace UI.Audio
         public static FMODEvents instance { get; private set; }
 
         [field: Header("Game musics")]
+        [field: SerializeField] public EventReference introMusic { get; private set; }
         [field: SerializeField] public EventReference menuMusic { get; private set; }
         [field: SerializeField] public EventReference gameplayMusic { get; private set; }
         [field: SerializeField] public EventReference bossMusic { get; private set; }
