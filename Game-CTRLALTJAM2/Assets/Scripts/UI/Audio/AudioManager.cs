@@ -58,13 +58,13 @@ namespace UI.Audio
             return eventInstance;
         }
 
-        private void InitializeMusic(EventReference musicEventReference)
+        public void InitializeMusic(EventReference musicEventReference)
         {
             musicEventInstance = CreateInstance(musicEventReference);
             musicEventInstance.start();
         }
 
-        private void CleanUp()
+        public void CleanUp()
         {
             foreach (var eventInstance in eventInstances)
             {

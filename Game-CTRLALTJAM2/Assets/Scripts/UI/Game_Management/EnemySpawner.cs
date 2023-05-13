@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UI.Audio;
 
 //REMOVER ENEMY SPAWN CLASS NA PASTA 
 
@@ -69,9 +70,12 @@ namespace UI.GameManagement
         {
             // Posição randomica
             //GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);            
-
+            
+            GameObject.FindFirstObjectByType<AudioManager>().CleanUp();
+            GameObject.FindFirstObjectByType<AudioManager>().InitializeMusic(FMODEvents.instance.bossMusic);
+            
             // Centro da Tela
-            GameObject enemy = Instantiate(_prefabBoss, Vector3.zero, Quaternion.identity);        
+            GameObject enemy = Instantiate(_prefabBoss, Vector3.zero, Quaternion.identity);
         }
 
         private void AddEnemyToList(GameObject enemy)
