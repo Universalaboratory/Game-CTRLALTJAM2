@@ -42,7 +42,7 @@ namespace UI.Audio
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
             {
                 Debug.LogWarning("Game Scene Recognized!");
-                InitializeMusic(FMODEvents.instance.menuMusic);
+                InitializeMusic(FMODEvents.instance.gameplayMusic);
             }
         }
 
