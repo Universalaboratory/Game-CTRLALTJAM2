@@ -71,7 +71,7 @@ namespace UI.GameManagement
             //GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);            
 
             // Centro da Tela
-            GameObject enemy = Instantiate(_prefabBoss, Vector3.zero, Quaternion.identity);            
+            GameObject enemy = Instantiate(_prefabBoss, Vector3.zero, Quaternion.identity);        
         }
 
         private void AddEnemyToList(GameObject enemy)

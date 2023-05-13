@@ -2,6 +2,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 namespace UI.Audio
 {
@@ -10,6 +11,8 @@ namespace UI.Audio
         private List<EventInstance> eventInstances;
 
         private EventInstance musicEventInstance;
+
+        public float MusicVolume = 1;
 
         public static AudioManager instance { get; private set; }
 
@@ -23,6 +26,24 @@ namespace UI.Audio
                 instance = this;
 
             eventInstances = new List<EventInstance>();
+        }
+
+        private void Start()
+        {
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("IntroScene"))
+            {
+                Debug.LogWarning("Introduction Scene Recognized!");
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene"))
+            {
+                Debug.LogWarning("Menu Scene Recognized!");
+                InitializeMusic(FMODEvents.instance.menuMusic);
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
+            {
+                Debug.LogWarning("Game Scene Recognized!");
+                InitializeMusic(FMODEvents.instance.menuMusic);
+            }
         }
 
         public void PlayOneShot(EventReference sound, Vector3 worldPos)
