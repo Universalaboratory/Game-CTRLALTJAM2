@@ -75,9 +75,9 @@ namespace UI.GameManagement
 
         public void ClickExitButton()
         {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#endif
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #endif
             Application.Quit();
         }
 
