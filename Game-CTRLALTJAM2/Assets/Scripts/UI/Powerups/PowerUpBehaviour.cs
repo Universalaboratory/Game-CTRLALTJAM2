@@ -8,6 +8,9 @@ namespace UI.PowerupSystem
     {
         [SerializeField] public Powerups _powerUp;
 
+        [Space]
+        [SerializeField] private float _maxTimeAliveSeconds;
+
         [HideInInspector] public SpriteRenderer _Sprite;
         [HideInInspector] public PowerUpTypes _type;
         [HideInInspector] public int _dropChance;
@@ -28,6 +31,8 @@ namespace UI.PowerupSystem
             _value = _powerUp.value;
             _coolDownSeconds = _powerUp.coolDownSeconds;
             _isOn = _powerUp.isOn;
+
+            Destroy(gameObject, _maxTimeAliveSeconds);
         }
     }
 }

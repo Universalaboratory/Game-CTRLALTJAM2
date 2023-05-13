@@ -418,10 +418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdca44f7ae717d48a4e6fe1f6617619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 2906320369614539360, guid: 651fc9e247be494499516ddfdd197cc0, type: 3}
   lootList:
-  - {fileID: 11400000, guid: 365249b4692f5bf49a61ac6916d4e500, type: 2}
-  - {fileID: 11400000, guid: a5035cdcf80fc8f42b5d2be2aa3bd8ee, type: 2}
+  - {fileID: 2906320369614539360, guid: 651fc9e247be494499516ddfdd197cc0, type: 3}
+  - {fileID: 2906320369614539360, guid: 7ebf811f2a75a3841bf3abe4d71fef4f, type: 3}
 --- !u!114 &7463615618581695809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +436,8 @@ MonoBehaviour:
   maxHealth: 5
   healthBar: {fileID: 8684588699836007745}
   filledHealthtBar: {fileID: 8684588700002570988}
+  _currentHealth: 0
+  _canDie: 1
   _enemySpeed: 1
   _minDistToAttack: 3
   _particleSpawner: {fileID: 2541943060607776386}
@@ -445,7 +446,6 @@ MonoBehaviour:
   _fireRate: 2
   _enemyBody: {fileID: 2541943059436233012}
   _weaponHolder: {fileID: 2541943060607776387}
-  _canDie: 1
 --- !u!1 &8684588699617512754
 GameObject:
   m_ObjectHideFlags: 0
