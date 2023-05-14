@@ -12,7 +12,8 @@ namespace UI.Audio
 
         private EventInstance musicEventInstance;
 
-        public float MusicVolume = 1;
+        public static float musicVolume = 1;
+        public static float sfxVolume = 1;
 
         public static AudioManager instance { get; private set; }
 
