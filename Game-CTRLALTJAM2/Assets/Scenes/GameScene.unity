@@ -7680,8 +7680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabEnemyList:
+  - {fileID: 3184755884128218916, guid: 7192fe666ed44514c8147d906b615873, type: 3}
   - {fileID: 3184755884128218916, guid: d56a6855ba8cf424195a4882f19b7599, type: 3}
-  - {fileID: 8684588699291711918, guid: 3f0fd60fc4112044295650d71a7299bf, type: 3}
   _prefabBoss: {fileID: 6517829056577116090, guid: 67b2f4024c8245b41905e80cd11cd2a5, type: 3}
   _enemiesToSpawnPerWave: 0
   _liveEnemyList: []
