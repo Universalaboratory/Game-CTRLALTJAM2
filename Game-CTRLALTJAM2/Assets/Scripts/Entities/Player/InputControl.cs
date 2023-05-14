@@ -133,6 +133,17 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""405bea79-832e-41b2-a969-c64fbc2fa80f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""cc1cf238-8a5f-4e6d-8ef8-b2f40943163f"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",

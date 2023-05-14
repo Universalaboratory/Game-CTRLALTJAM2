@@ -49,9 +49,7 @@ namespace UI.GameManagement
 
         private Vector2 GetPosition()
         {
-
             return (Vector2)transform.position + Random.insideUnitCircle * _colliderArea;
-
         }
 
         private void SpawnEnemy(WaveState currentWave)
@@ -73,7 +71,6 @@ namespace UI.GameManagement
             //GameObject.FindFirstObjectByType<AudioManager>().CleanUp();
             //GameObject.FindFirstObjectByType<AudioManager>().InitializeMusic(FMODEvents.instance.bossMusic);
 
-            // Centro da Tela
             GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);
         }
 

@@ -1,5 +1,6 @@
 using UI.PowerupSystem;
 using UnityEngine;
+using UI.GameManagement;
 
 namespace UI.PowerupSystem
 {
@@ -22,6 +23,8 @@ namespace UI.PowerupSystem
 
         void Update()
         {
+            if (GameManager.Instance._state != GameState.GAMEPLAY) return;
+    
             Spawn();
         }
 

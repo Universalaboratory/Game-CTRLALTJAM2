@@ -102,7 +102,6 @@ namespace Entities.Player
             if (_timer >= _dashCoolDownTimeSeconds)
             {
                 _canDash = true;
-                Debug.LogWarning(_canDash);
                 _timer = 0;
                 return;
             }
@@ -110,8 +109,6 @@ namespace Entities.Player
 
         private IEnumerator DashBehaviour()
         {
-            Debug.LogWarning("Começou Dash");
-
             _rb.velocity = Vector2.zero;
 
             var dashForce = new Vector2(_movement.x * _dashSpeed, _movement.y * _dashSpeed);
@@ -119,10 +116,6 @@ namespace Entities.Player
 
             yield return new WaitForSeconds(_dashTotalDistance);
             _isDashing = false;
-
-            Debug.LogWarning("Terminou Dash");
         }
-
-
     }
 }
