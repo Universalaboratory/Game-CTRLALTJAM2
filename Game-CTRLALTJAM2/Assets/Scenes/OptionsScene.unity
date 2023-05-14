@@ -998,7 +998,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1356447895}
         m_TargetAssemblyTypeName: UI.GameManagement.UIMenuManager, GameManagement
         m_MethodName: ClickBackButton
         m_Mode: 1
