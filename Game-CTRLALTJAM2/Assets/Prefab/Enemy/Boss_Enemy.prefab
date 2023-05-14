@@ -577,7 +577,7 @@ MonoBehaviour:
   filledHealthtBar: {fileID: 6517829055274728696}
   _currentHealth: 0
   _canDie: 1
-  _enemySpeed: 0
+  _enemySpeed: 0.2
   _minDistToAttack: 30
   _particleSpawner: {fileID: 121854648005122198}
   _particlePrefab: {fileID: -9188150409727321494, guid: 4ecd8835f863664468575db9d9e4cfbc, type: 3}

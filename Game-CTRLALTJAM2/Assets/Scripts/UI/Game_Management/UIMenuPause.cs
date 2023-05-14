@@ -50,6 +50,7 @@ namespace UI.GameManagement
             _gameplayPanel.SetActive(false);
             _menuPanel.SetActive(false);
             _gameOverPanel.SetActive(false);
+            _winPanel.SetActive(false);
         }
 
         public void ClickPauseButton()
