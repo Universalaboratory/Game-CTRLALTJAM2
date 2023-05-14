@@ -8,9 +8,9 @@ public class MenuAnimation : MonoBehaviour
     public GameObject txt;
     public GameObject menuPanel;
 
-    private Vector2 initPos;
+    [SerializeField] private float _finalPos = 0.2f;
 
-    [SerializeField] private bool _keyPressed, _transitionOver;
+    private bool _keyPressed, _transitionOver;
 
     void Start()
     {
@@ -35,17 +35,12 @@ public class MenuAnimation : MonoBehaviour
     {
         if (!_transitionOver)
         {
-            Debug.LogWarning("Transition Entrou");
-
-            if (bg.uvRect.position.x < 0.499f)
+            if (bg.uvRect.position.x < _finalPos)
             {
-                Debug.LogWarning(" BG Andando");
                 bg.uvRect = new Rect(bg.uvRect.position + new Vector2(0.0001f, 0) * Time.deltaTime * 1000, bg.uvRect.size);
-
             }
             else
             {
-                Debug.LogWarning(" BG Chegou");
                 menuPanel.SetActive(true);
                 _transitionOver = true;
             }
