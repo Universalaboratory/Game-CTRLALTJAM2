@@ -67,9 +67,8 @@ namespace UI.GameManagement
 
         private void SpawnBoss()
         {
-            //Não ta funcionando pra mim, entao foi comentar 
-            //GameObject.FindFirstObjectByType<AudioManager>().CleanUp();
-            //GameObject.FindFirstObjectByType<AudioManager>().InitializeMusic(FMODEvents.instance.bossMusic);
+            GameObject.FindFirstObjectByType<AudioManager>().CleanUp();
+            GameObject.FindFirstObjectByType<AudioManager>().InitializeMusic(FMODEvents.instance.bossMusic);
 
             GameObject enemy = Instantiate(_prefabBoss, GetPosition(), Quaternion.identity);
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UI.GameManagement;
 using Entities.Player;
+using UI.Audio;
 
 namespace Entities.Enemy
 {
@@ -124,6 +125,7 @@ namespace Entities.Enemy
             if (timer >= nextTimeToFire)
             {
                 _particleSpawner._pool.Get();
+                GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.enemyGunshot, transform.position);
                 timer = 0;
             }
         }
@@ -136,6 +138,8 @@ namespace Entities.Enemy
             var damage = other.GetComponent<ParticleDamageSystem>().Damage;
             healthBar.gameObject.SetActive(true);
             HealthBarFiller(damage);
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.enemyGotDamaged, transform.position);
+
         }
 
         protected virtual void LostHealth()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UI.GameManagement;
+using UI.Audio;
 
 namespace Entities.Player
 {
@@ -70,6 +71,7 @@ namespace Entities.Player
             if (timer >= nextTimeToFire)
             {
                 _particleSpawner._pool.Get();
+                GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.playerGunshot, transform.position);
                 timer = 0;
             }
         }
