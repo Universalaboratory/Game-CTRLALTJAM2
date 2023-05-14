@@ -11,6 +11,7 @@ TagManager:
   - IncreaseSpeed
   - IncreaseDamage
   - IncreaseDash
+  - Boss
   layers:
   - Default
   - TransparentFX
