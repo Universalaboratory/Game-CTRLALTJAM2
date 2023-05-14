@@ -3,6 +3,7 @@ using Utilities;
 using UI.GameManagement;
 using UI.LootSystem;
 using UI.PowerupSystem;
+using UI.Audio;
 
 namespace Entities.Player
 {
@@ -17,7 +18,7 @@ namespace Entities.Player
             _playerPowerUpHandler = GetComponent<PlayerPowerUpHandler>();
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             WhatLootFound(other);
 
@@ -90,6 +91,7 @@ namespace Entities.Player
         // Power Ups Effects
         private void DashEffect(Collider2D self)
         {
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.powerups, transform.position);
             var values = self.gameObject.GetComponent<PowerUpBehaviour>();
 
             var coolDown = values._coolDownSeconds;
@@ -103,6 +105,7 @@ namespace Entities.Player
 
         private void IncLifeEffect(Collider2D self)
         {
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.powerups, transform.position);
             var values = self.gameObject.GetComponent<PowerUpBehaviour>();
 
             var coolDown = values._coolDownSeconds;
@@ -116,6 +119,7 @@ namespace Entities.Player
 
         private void IncSpeedEffect(Collider2D self)
         {
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.powerups, transform.position);
             var values = self.gameObject.GetComponent<PowerUpBehaviour>();
 
             var coolDown = values._coolDownSeconds;
@@ -129,6 +133,7 @@ namespace Entities.Player
 
         private void IncDamageEffect(Collider2D self)
         {
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.powerups, transform.position);
             var values = self.gameObject.GetComponent<PowerUpBehaviour>();
 
             var coolDown = values._coolDownSeconds;

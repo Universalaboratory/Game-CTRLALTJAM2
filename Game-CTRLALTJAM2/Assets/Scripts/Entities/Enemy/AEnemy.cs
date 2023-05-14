@@ -125,7 +125,12 @@ namespace Entities.Enemy
             if (timer >= nextTimeToFire)
             {
                 _particleSpawner._pool.Get();
-                GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.enemyGunshot, transform.position);
+                
+                if(gameObject.CompareTag("Boss"))
+                    GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.bossGunshot, transform.position);
+                else
+                    GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.enemyGunshot, transform.position);
+
                 timer = 0;
             }
         }
@@ -160,4 +165,3 @@ namespace Entities.Enemy
         protected abstract void Die();
     }
 }
-
