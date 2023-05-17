@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 80038487}
   m_Layer: 5
   m_Name: Exit_Button
-  m_TagString: Untagged
+  m_TagString: QuitButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 140512254}
   - component: {fileID: 140512255}
   m_Layer: 0
-  m_Name: Limit (1)
+  m_Name: LimitDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,13 +723,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 140512253}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -22.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -24.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1257255311}
-  m_RootOrder: 6
+  m_Father: {fileID: 1003701835}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &140512255
 EdgeCollider2D:
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 226060812}
   m_Layer: 5
   m_Name: Restart_Button
-  m_TagString: Untagged
+  m_TagString: RestartButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4164,6 +4164,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.8607178}
   m_SizeDelta: {x: 0.00012207, y: 0.8878}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1003701834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003701835}
+  m_Layer: 0
+  m_Name: Scenario_Boundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1003701835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003701834}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.77, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2022584721}
+  - {fileID: 140512254}
+  - {fileID: 1767745652}
+  - {fileID: 1026730343}
+  m_Father: {fileID: 1257255311}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026730342
 GameObject:
   m_ObjectHideFlags: 0
@@ -4175,7 +4210,7 @@ GameObject:
   - component: {fileID: 1026730343}
   - component: {fileID: 1026730344}
   m_Layer: 0
-  m_Name: Limit (3)
+  m_Name: LimitRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4188,13 +4223,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026730342}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.3, y: -10.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 34.3, y: -12.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1257255311}
-  m_RootOrder: 8
+  m_Father: {fileID: 1003701835}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1026730344
 EdgeCollider2D:
@@ -4213,7 +4248,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.42139435, y: -11.357283}
-  - {x: -0.44091797, y: 10.750156}
+  - {x: -0.42139435, y: -12.246543}
+  - {x: -0.35198975, y: 12.528672}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -4880,10 +4916,7 @@ Transform:
   - {fileID: 1662584768}
   - {fileID: 403440267}
   - {fileID: 2139903985}
-  - {fileID: 2022584721}
-  - {fileID: 140512254}
-  - {fileID: 1767745652}
-  - {fileID: 1026730343}
+  - {fileID: 1003701835}
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7067,7 +7100,7 @@ GameObject:
   - component: {fileID: 1767745652}
   - component: {fileID: 1767745653}
   m_Layer: 0
-  m_Name: Limit (2)
+  m_Name: LimitLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7080,13 +7113,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767745651}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.9, y: -10.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -26.9, y: -12.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1257255311}
-  m_RootOrder: 7
+  m_Father: {fileID: 1003701835}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1767745653
 EdgeCollider2D:
@@ -7104,8 +7137,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.42139435, y: -11.357283}
-  - {x: -0.44091797, y: 10.750156}
+  - {x: -0.42139435, y: -12.513315}
+  - {x: -0.35199356, y: 12.973301}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -7572,7 +7605,7 @@ GameObject:
   - component: {fileID: 2022584721}
   - component: {fileID: 2022584722}
   m_Layer: 0
-  m_Name: Limit
+  m_Name: LimitUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7585,13 +7618,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022584720}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.84, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1257255311}
-  m_RootOrder: 5
+  m_Father: {fileID: 1003701835}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &2022584722
 EdgeCollider2D:
