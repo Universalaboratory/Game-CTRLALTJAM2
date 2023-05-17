@@ -12,6 +12,14 @@ TagManager:
   - IncreaseDamage
   - IncreaseDash
   - Boss
+  - PlayGameButton
+  - ContinueButton
+  - RestartButton
+  - OptionsButton
+  - CreditsButton
+  - QuitButton
+  - BackButton
+  - PauseButton
   layers:
   - Default
   - TransparentFX

@@ -154,7 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d59c0ad87a11b4ba202eac1856ffaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicVolume: 1
 --- !u!114 &54637793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3159,7 +3158,7 @@ GameObject:
   - component: {fileID: 777703498}
   m_Layer: 5
   m_Name: Pause_Button
-  m_TagString: Untagged
+  m_TagString: PauseButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5266,7 +5265,7 @@ GameObject:
   - component: {fileID: 1321889752}
   m_Layer: 5
   m_Name: Play_Button
-  m_TagString: Untagged
+  m_TagString: ContinueButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5399,7 +5398,7 @@ GameObject:
   - component: {fileID: 1358462989}
   m_Layer: 5
   m_Name: Exit_Button
-  m_TagString: Untagged
+  m_TagString: QuitButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5959,7 +5958,7 @@ GameObject:
   - component: {fileID: 1468101838}
   m_Layer: 5
   m_Name: Restart_Button
-  m_TagString: Untagged
+  m_TagString: RestartButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6092,7 +6091,7 @@ GameObject:
   - component: {fileID: 1500108747}
   m_Layer: 5
   m_Name: Restart_Button
-  m_TagString: Untagged
+  m_TagString: RestartButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6749,7 +6748,7 @@ GameObject:
   - component: {fileID: 1744765510}
   m_Layer: 5
   m_Name: Exit_Button
-  m_TagString: Untagged
+  m_TagString: QuitButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

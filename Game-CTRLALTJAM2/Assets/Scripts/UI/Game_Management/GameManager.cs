@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UI.Audio;
 
 public enum GameState
 {
@@ -69,6 +68,8 @@ namespace UI.GameManagement
 
         private void GameOver()
         {
+            GameObject.FindObjectOfType<AudioManager>().CleanUp();
+            GameObject.FindObjectOfType<AudioManager>().PlayOneShot(FMODEvents.instance.defeatEnd, Vector3.zero);
             ChangeState(GameState.GAMEOVER);
         }
 
