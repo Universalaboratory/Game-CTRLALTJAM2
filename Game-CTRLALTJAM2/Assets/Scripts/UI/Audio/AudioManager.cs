@@ -12,10 +12,22 @@ namespace UI.Audio
 
         private EventInstance musicEventInstance;
 
-        public static float musicVolume = 1;
-        public static float sfxVolume = 1;
+        [Range(0f, 1f)] public float musicVolume = 1f;
+        [Range(0f, 1f)] public float sfxVolume = 1f;
+        
+        public Bus musicBus;
+        public Bus sfxBus;
 
         public static AudioManager instance { get; private set; }
+
+        private enum GameStates
+        {
+            Intro,
+            Menu,
+            Game
+        };
+
+        private GameStates currentState, lastState;
 
         private void Awake()
         {
@@ -27,21 +39,54 @@ namespace UI.Audio
                 instance = this;
 
             eventInstances = new List<EventInstance>();
+
+            musicBus = RuntimeManager.GetBus("bus:/Music");
+            sfxBus = RuntimeManager.GetBus("bus:/Sfx");
         }
 
         private void Start()
         {
-            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("IntroScene"))
+            DontDestroyOnLoad(this);
+
+            currentState = GameStates.Intro;
+            lastState = GameStates.Intro;
+
+            InitializeMusic(FMODEvents.instance.introMusic);
+        }
+
+        private void Update()
+        {
+            musicBus.setVolume(musicVolume);
+            sfxBus.setVolume(sfxVolume);
+
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene") ||
+                    SceneManager.GetActiveScene() == SceneManager.GetSceneByName("OptionsScene") ||
+                    SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditScene"))
+                currentState = GameStates.Menu;
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
+                currentState = GameStates.Game;
+
+            if (currentState != lastState)
+                ChooseMusic();
+            else
+                return;
+        }
+
+        private void ChooseMusic()
+        {
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene") ||
+                    SceneManager.GetActiveScene() == SceneManager.GetSceneByName("OptionsScene") ||
+                    SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditScene"))
             {
-                InitializeMusic(FMODEvents.instance.introMusic);
-            }
-            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene"))
-            {
+                CleanUp();
                 InitializeMusic(FMODEvents.instance.menuMusic);
+                lastState = GameStates.Menu;
             }
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
             {
+                CleanUp();
                 InitializeMusic(FMODEvents.instance.gameplayMusic);
+                lastState = GameStates.Game;
             }
         }
 
