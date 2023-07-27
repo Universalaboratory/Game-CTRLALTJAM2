@@ -21,7 +21,7 @@ namespace UI.GameManagement
         {
             _menuButtons = GameObject.FindGameObjectWithTag("OptionsButton");
             GameObject.FindAnyObjectByType<AudioManager>().PlayOneShot(FMODEvents.instance.menuConfirm, _menuButtons.transform.position);
-            SceneManager.LoadScene(Constants.OPTIONS_SCENE);
+            AudioManager._options.SetActive(true);
         }
 
         public void ClickCreditButton()

@@ -3,6 +3,7 @@ using FMODUnity;
 using FMOD.Studio;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace UI.Audio
 {
@@ -14,9 +15,14 @@ namespace UI.Audio
 
         [Range(0f, 1f)] public float musicVolume = 1f;
         [Range(0f, 1f)] public float sfxVolume = 1f;
-        
+
         public Bus musicBus;
         public Bus sfxBus;
+        [SerializeField] private GameObject canvas;
+        public static GameObject _options;
+        [SerializeField] private Slider _musicSlider;
+        [SerializeField] private Slider _sfxSlider;
+        [SerializeField] private Button _backButton;
 
         public static AudioManager instance { get; private set; }
 
@@ -42,11 +48,16 @@ namespace UI.Audio
 
             musicBus = RuntimeManager.GetBus("bus:/Music");
             sfxBus = RuntimeManager.GetBus("bus:/Sfx");
+
+            _options = GameObject.FindGameObjectWithTag("Canvas Options");
+            _options.SetActive(false);
+            //canvas.SetActive(false);
         }
 
         private void Start()
         {
             DontDestroyOnLoad(this);
+            DontDestroyOnLoad(_options);
 
             currentState = GameStates.Intro;
             lastState = GameStates.Intro;
@@ -59,9 +70,11 @@ namespace UI.Audio
             musicBus.setVolume(musicVolume);
             sfxBus.setVolume(sfxVolume);
 
+            _musicSlider.value = musicVolume;
+            _sfxSlider.value = sfxVolume;
+
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene") ||
-                    SceneManager.GetActiveScene() == SceneManager.GetSceneByName("OptionsScene") ||
-                    SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditScene"))
+                SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditScene"))
                 currentState = GameStates.Menu;
             else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("GameScene"))
                 currentState = GameStates.Game;
@@ -72,10 +85,13 @@ namespace UI.Audio
                 return;
         }
 
+        public void OnMusicSliderValueChanged() { musicVolume = _musicSlider.value; }
+
+        public void OnSFXSliderValueChanged() { sfxVolume = _sfxSlider.value; }
+
         private void ChooseMusic()
         {
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene") ||
-                    SceneManager.GetActiveScene() == SceneManager.GetSceneByName("OptionsScene") ||
                     SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditScene"))
             {
                 CleanUp();
@@ -120,6 +136,12 @@ namespace UI.Audio
         private void OnDestroy()
         {
             CleanUp();
+        }
+
+        public void Back()
+        {
+            PlayOneShot(FMODEvents.instance.menuConfirm, _backButton.transform.position);
+            _options.SetActive(false);
         }
     }
 }
