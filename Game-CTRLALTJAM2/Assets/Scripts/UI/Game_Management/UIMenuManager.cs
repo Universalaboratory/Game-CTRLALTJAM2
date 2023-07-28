@@ -8,6 +8,7 @@ namespace UI.GameManagement
     public class UIMenuManager : MonoBehaviour
     {
         private GameObject _menuButtons;
+        [SerializeField] private GameObject _credits;
 
         public void ClickStartButton()
         {
@@ -28,7 +29,8 @@ namespace UI.GameManagement
         {
             _menuButtons = GameObject.FindGameObjectWithTag("CreditsButton");
             GameObject.FindAnyObjectByType<AudioManager>().PlayOneShot(FMODEvents.instance.menuConfirm, _menuButtons.transform.position);
-            SceneManager.LoadScene(Constants.CREDIT_SCENE);
+            //SceneManager.LoadScene(Constants.CREDIT_SCENE);
+            _credits.SetActive(true);
         }
 
         public void ClickQuitButton()
@@ -46,7 +48,7 @@ namespace UI.GameManagement
         {
             _menuButtons = GameObject.FindGameObjectWithTag("BackButton");
             GameObject.FindAnyObjectByType<AudioManager>().PlayOneShot(FMODEvents.instance.menuConfirm, _menuButtons.transform.position);
-            SceneManager.LoadScene(Constants.MENU_START_SCENE);
+            _credits.SetActive(false);
         }
     }
 }

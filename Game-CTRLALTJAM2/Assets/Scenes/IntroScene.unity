@@ -233,7 +233,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -308,8 +308,8 @@ RectTransform:
   m_Father: {fileID: 952459908}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 14.560516, y: 0}
   m_SizeDelta: {x: 49.121, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -565,10 +565,10 @@ RectTransform:
   m_Father: {fileID: 1183176261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3016042, y: 0.41400003}
-  m_AnchorMax: {x: 0.45943752, y: 0.462}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.291, y: 0.41400003}
+  m_AnchorMax: {x: 0.4494792, y: 0.462}
+  m_AnchoredPosition: {x: -2, y: 0}
+  m_SizeDelta: {x: -2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417892964
 MonoBehaviour:
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music Vol.
+  m_text: Master Vol.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 30fd3c38dc293a2478ddd1a6bd9e9be2, type: 2}
   m_sharedMaterial: {fileID: -7557395361376390360, guid: 30fd3c38dc293a2478ddd1a6bd9e9be2, type: 2}
@@ -1141,10 +1141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d59c0ad87a11b4ba202eac1856ffaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
   musicVolume: 1
   sfxVolume: 1
-  _musicSlider: {fileID: 1003287719}
-  _sfxSlider: {fileID: 1372392798}
+  _masterSlider: {fileID: 1003287719}
+  _musicSlider: {fileID: 1372392798}
+  _sfxSlider: {fileID: 1217950147}
   _backButton: {fileID: 1509007735}
 --- !u!1 &639188488
 GameObject:
@@ -1433,10 +1435,10 @@ RectTransform:
   m_Father: {fileID: 1248783826}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.312, y: 0.23200001}
-  m_AnchorMax: {x: 0.45943752, y: 0.2798148}
-  m_AnchoredPosition: {x: -10, y: 1}
-  m_SizeDelta: {x: 20, y: 0}
+  m_AnchorMin: {x: 0.29200003, y: 0.23200001}
+  m_AnchorMax: {x: 0.448, y: 0.2798148}
+  m_AnchoredPosition: {x: -1, y: 1}
+  m_SizeDelta: {x: 2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952908988
 MonoBehaviour:
@@ -1628,7 +1630,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 617940618}
         m_TargetAssemblyTypeName: UI.Audio.AudioManager, Audio
-        m_MethodName: OnMusicSliderValueChanged
+        m_MethodName: OnMasterSliderValueChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1797,7 +1799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1183176261}
   m_Layer: 5
-  m_Name: Music Vol
+  m_Name: Master Vol
   m_TagString: MusicSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1895,7 +1897,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 617940618}
         m_TargetAssemblyTypeName: UI.Audio.AudioManager, Audio
-        m_MethodName: OnMenuSliderValueChanged
+        m_MethodName: OnMenuSFXSliderValueChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1943,7 +1945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1248783826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2059,7 +2061,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 617940618}
         m_TargetAssemblyTypeName: UI.Audio.AudioManager, Audio
-        m_MethodName: OnSFXSliderValueChanged
+        m_MethodName: OnMusicSliderValueChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2387,10 +2389,10 @@ RectTransform:
   m_Father: {fileID: 1914820527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3016042, y: 0.32537037}
-  m_AnchorMax: {x: 0.45943752, y: 0.37337038}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.29200003, y: 0.32537037}
+  m_AnchorMax: {x: 0.44852084, y: 0.37337038}
+  m_AnchoredPosition: {x: -2, y: 1}
+  m_SizeDelta: {x: 2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1528229178
 MonoBehaviour:
@@ -2412,7 +2414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SFX Vol.
+  m_text: Music Vol.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 30fd3c38dc293a2478ddd1a6bd9e9be2, type: 2}
   m_sharedMaterial: {fileID: -7557395361376390360, guid: 30fd3c38dc293a2478ddd1a6bd9e9be2, type: 2}
@@ -2826,7 +2828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914820527}
   m_Layer: 5
-  m_Name: SFX Vol
+  m_Name: Music Vol
   m_TagString: SFXSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
