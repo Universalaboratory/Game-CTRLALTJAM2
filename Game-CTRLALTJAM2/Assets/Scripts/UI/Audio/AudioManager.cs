@@ -13,13 +13,16 @@ namespace UI.Audio
 
         private EventInstance musicEventInstance;
 
+        [Range(0f, 1f)] public float masterVolume = 1f;
         [Range(0f, 1f)] public float musicVolume = 1f;
         [Range(0f, 1f)] public float sfxVolume = 1f;
 
+        public Bus masterBus;
         public Bus musicBus;
-        public Bus sfxBus;
-        [SerializeField] private GameObject canvas;
+        public Bus menuSfxBus;
+
         public static GameObject _options;
+        [SerializeField] private Slider _masterSlider;
         [SerializeField] private Slider _musicSlider;
         [SerializeField] private Slider _sfxSlider;
         [SerializeField] private Button _backButton;
@@ -46,12 +49,12 @@ namespace UI.Audio
 
             eventInstances = new List<EventInstance>();
 
+            masterBus = RuntimeManager.GetBus("bus:/");
             musicBus = RuntimeManager.GetBus("bus:/Music");
-            sfxBus = RuntimeManager.GetBus("bus:/Sfx");
+            menuSfxBus = RuntimeManager.GetBus("bus:/Sfx");
 
             _options = GameObject.FindGameObjectWithTag("Canvas Options");
             _options.SetActive(false);
-            //canvas.SetActive(false);
         }
 
         private void Start()
@@ -67,11 +70,13 @@ namespace UI.Audio
 
         private void Update()
         {
+            masterBus.setVolume(masterVolume);
             musicBus.setVolume(musicVolume);
-            sfxBus.setVolume(sfxVolume);
+            menuSfxBus.setVolume(sfxVolume);
 
             _musicSlider.value = musicVolume;
             _sfxSlider.value = sfxVolume;
+            _masterSlider.value = masterVolume;
 
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene") ||
                 SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditScene"))
@@ -85,9 +90,10 @@ namespace UI.Audio
                 return;
         }
 
+        public void OnMasterSliderValueChanged() { masterVolume = _masterSlider.value; }
         public void OnMusicSliderValueChanged() { musicVolume = _musicSlider.value; }
 
-        public void OnSFXSliderValueChanged() { sfxVolume = _sfxSlider.value; }
+        public void OnMenuSFXSliderValueChanged() { sfxVolume = _sfxSlider.value; }
 
         private void ChooseMusic()
         {
