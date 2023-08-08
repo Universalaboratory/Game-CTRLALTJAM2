@@ -6559,6 +6559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b76d157b28048d4c8d6c5f31116e2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _credits: {fileID: 0}
 --- !u!1 &1744765508
 GameObject:
   m_ObjectHideFlags: 0
@@ -6742,7 +6743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particlePool: {fileID: 6803213378405401038, guid: 343df50bf7d2fca418c34a853e6cc66e, type: 3}
   _bulletSpawn: {fileID: 66306309}
-  _fireRate: 2
+  _fireRate: 5
 --- !u!114 &1749380252
 MonoBehaviour:
   m_ObjectHideFlags: 0
