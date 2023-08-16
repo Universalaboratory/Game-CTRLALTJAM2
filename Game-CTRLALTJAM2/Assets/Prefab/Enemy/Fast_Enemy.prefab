@@ -417,7 +417,7 @@ MonoBehaviour:
   _currentHealth: 0
   _canDie: 1
   _enemySpeed: 1.5
-  _minDistToAttack: 2
+  _minDistToAttack: 3
   _particleSpawner: {fileID: 8642854413978886152}
   _particlePrefab: {fileID: -9188150409727321494, guid: bc7f6f7289ddf9540aa1811550e3e660, type: 3}
   _bulletSpawn: {fileID: 5327617816008845725}
@@ -649,7 +649,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4862b1f4315e83444b670ed4e285f0e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

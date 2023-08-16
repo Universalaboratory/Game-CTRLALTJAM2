@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using Utilities;
 using TMPro;
+using UI.Audio;
 
 namespace UI.GameManagement
 {
@@ -19,6 +20,9 @@ namespace UI.GameManagement
         [SerializeField] private TMP_Text _waveText;
         [SerializeField] private float _waveTextFadeTimer = 2.5f;
         private Color _waveTextColor;
+
+        [Header("Menu Buttons")]
+        private GameObject _menuButtons;
 
         void Start()
         {
@@ -55,6 +59,9 @@ namespace UI.GameManagement
 
         public void ClickPauseButton()
         {
+            _menuButtons = GameObject.FindGameObjectWithTag("PauseButton");
+            GameObject.FindAnyObjectByType<AudioManager>().PlayOneShot(FMODEvents.instance.menuConfirm, _menuButtons.transform.position);
+
             UtilityEvents.GamePause();
 
             CloseAllPanel();
@@ -63,6 +70,9 @@ namespace UI.GameManagement
 
         public void ClickPlayButton()
         {
+            _menuButtons = GameObject.FindGameObjectWithTag("ContinueButton");
+            GameObject.FindAnyObjectByType<AudioManager>().PlayOneShot(FMODEvents.instance.menuConfirm, _menuButtons.transform.position);
+
             UtilityEvents.GameResume();
 
             CloseAllPanel();
@@ -71,14 +81,19 @@ namespace UI.GameManagement
 
         public void ClickRestartButton()
         {
+            _menuButtons = GameObject.FindGameObjectWithTag("RestartButton");
+            GameObject.FindAnyObjectByType<AudioManager>().PlayOneShot(FMODEvents.instance.menuConfirm, _menuButtons.transform.position);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         public void ClickExitButton()
         {
+            _menuButtons = GameObject.FindGameObjectWithTag("QuitButton");
+            GameObject.FindAnyObjectByType<AudioManager>().PlayOneShot(FMODEvents.instance.menuConfirm, _menuButtons.transform.position);
+
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-#endif
+            #endif
             Application.Quit();
         }
 
