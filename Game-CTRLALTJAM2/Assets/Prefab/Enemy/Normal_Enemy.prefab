@@ -417,7 +417,7 @@ MonoBehaviour:
   _currentHealth: 0
   _canDie: 1
   _enemySpeed: 1
-  _minDistToAttack: 4
+  _minDistToAttack: 5
   _particleSpawner: {fileID: 8642854413978886152}
   _particlePrefab: {fileID: -9188150409727321494, guid: bc7f6f7289ddf9540aa1811550e3e660, type: 3}
   _bulletSpawn: {fileID: 5327617816008845725}
