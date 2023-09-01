@@ -567,7 +567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.291, y: 0.41400003}
   m_AnchorMax: {x: 0.4494792, y: 0.462}
-  m_AnchoredPosition: {x: -2, y: 0}
+  m_AnchoredPosition: {x: -34, y: 0}
   m_SizeDelta: {x: -2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417892964
@@ -1437,7 +1437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.29200003, y: 0.23200001}
   m_AnchorMax: {x: 0.448, y: 0.2798148}
-  m_AnchoredPosition: {x: -1, y: 1}
+  m_AnchoredPosition: {x: -33, y: 1}
   m_SizeDelta: {x: 2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &952908988
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu Vol.
+  m_text: SFX Vol.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 30fd3c38dc293a2478ddd1a6bd9e9be2, type: 2}
   m_sharedMaterial: {fileID: -7557395361376390360, guid: 30fd3c38dc293a2478ddd1a6bd9e9be2, type: 2}
@@ -1574,7 +1574,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45943752, y: 0.41400003}
   m_AnchorMax: {x: 0.6814792, y: 0.462}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 107.627075, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1003287719
@@ -1824,7 +1824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1217950146
@@ -1897,7 +1897,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 617940618}
         m_TargetAssemblyTypeName: UI.Audio.AudioManager, Audio
-        m_MethodName: OnMenuSFXSliderValueChanged
+        m_MethodName: OnSFXSliderValueChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1927,7 +1927,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45214587, y: 0.23200001}
   m_AnchorMax: {x: 0.68043756, y: 0.2798148}
-  m_AnchoredPosition: {x: 0.3730011, y: 0.65997314}
+  m_AnchoredPosition: {x: 108.00008, y: 0.65997314}
   m_SizeDelta: {x: -0.7458, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1248783825
@@ -1940,7 +1940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1248783826}
   m_Layer: 5
-  m_Name: Menu Vol
+  m_Name: SFX Vol
   m_TagString: SFXSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2005,7 +2005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45943752, y: 0.32537037}
   m_AnchorMax: {x: 0.68043756, y: 0.37337038}
-  m_AnchoredPosition: {x: -4.6271057, y: 1}
+  m_AnchoredPosition: {x: 102.99997, y: 1}
   m_SizeDelta: {x: 13.2542, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1372392798
@@ -2391,7 +2391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.29200003, y: 0.32537037}
   m_AnchorMax: {x: 0.44852084, y: 0.37337038}
-  m_AnchoredPosition: {x: -2, y: 1}
+  m_AnchoredPosition: {x: -34, y: 1}
   m_SizeDelta: {x: 2, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1528229178
@@ -2853,7 +2853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2056133622

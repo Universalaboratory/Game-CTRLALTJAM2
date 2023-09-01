@@ -19,7 +19,7 @@ namespace UI.Audio
 
         public Bus masterBus;
         public Bus musicBus;
-        public Bus menuSfxBus;
+        public Bus sfxBus;
 
         public static GameObject _options;
         [SerializeField] private Slider _masterSlider;
@@ -51,7 +51,7 @@ namespace UI.Audio
 
             masterBus = RuntimeManager.GetBus("bus:/");
             musicBus = RuntimeManager.GetBus("bus:/Music");
-            menuSfxBus = RuntimeManager.GetBus("bus:/Sfx");
+            sfxBus = RuntimeManager.GetBus("bus:/Sfx");
 
             _options = GameObject.FindGameObjectWithTag("Canvas Options");
             _options.SetActive(false);
@@ -72,12 +72,12 @@ namespace UI.Audio
         {
             masterBus.setVolume(masterVolume);
             musicBus.setVolume(musicVolume);
-            menuSfxBus.setVolume(sfxVolume);
+            sfxBus.setVolume(sfxVolume);
 
+            _masterSlider.value = masterVolume;
             _musicSlider.value = musicVolume;
             _sfxSlider.value = sfxVolume;
-            _masterSlider.value = masterVolume;
-
+            
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MenuStartScene") ||
                 SceneManager.GetActiveScene() == SceneManager.GetSceneByName("CreditScene"))
                 currentState = GameStates.Menu;
@@ -92,8 +92,7 @@ namespace UI.Audio
 
         public void OnMasterSliderValueChanged() { masterVolume = _masterSlider.value; }
         public void OnMusicSliderValueChanged() { musicVolume = _musicSlider.value; }
-
-        public void OnMenuSFXSliderValueChanged() { sfxVolume = _sfxSlider.value; }
+        public void OnSFXSliderValueChanged() { sfxVolume = _sfxSlider.value; }
 
         private void ChooseMusic()
         {
